@@ -7,6 +7,20 @@ const (
 	MaxUint64Factorial = 20
 )
 
+func FactorialUint64Iterative(n int) (uint64, error) {
+	if n < 0 {
+		return 0, fmt.Errorf("factorial: argument must be a non-negative integer, got %d", n)
+	}
+	if n > MaxUint64Factorial {
+		return 0, fmt.Errorf("factorial: %d! would overflow uint64", n)
+	}
+	result := uint64(1)
+	for i := 2; i <= n; i++ {
+		result *= uint64(i)
+	}
+	return result, nil
+}
+
 func FactorialUint64Recursive(n int) (uint64, error) {
 	if n < 0 {
 		return 0, fmt.Errorf("factorial: argument must be a non-negative integer, got %d", n)
