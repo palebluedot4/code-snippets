@@ -1,6 +1,23 @@
 package factorial
 
-import "fmt"
+import (
+	"fmt"
+	"math/big"
+)
+
+func FactorialRecursive(n int64) (*big.Int, error) {
+	if n < 0 {
+		return nil, fmt.Errorf("factorial: argument must be a non-negative integer, got %d", n)
+	}
+	return factorialRecursive(new(big.Int).SetInt64(n)), nil
+}
+
+func factorialRecursive(n *big.Int) *big.Int {
+	if n.Cmp(big.NewInt(1)) <= 0 {
+		return big.NewInt(1)
+	}
+	return new(big.Int).Mul(n, factorialRecursive(new(big.Int).Sub(n, big.NewInt(1))))
+}
 
 const (
 	// 20! is the largest factorial that fits in uint64
