@@ -5,6 +5,13 @@ import (
 	"math/big"
 )
 
+func Factorial(n int64) (*big.Int, error) {
+	if n < 0 {
+		return nil, fmt.Errorf("factorial: argument must be a non-negative integer, got %d", n)
+	}
+	return new(big.Int).MulRange(1, n), nil
+}
+
 func FactorialIterative(n int64) (*big.Int, error) {
 	if n < 0 {
 		return nil, fmt.Errorf("factorial: argument must be a non-negative integer, got %d", n)
