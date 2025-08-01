@@ -5,6 +5,17 @@ import (
 	"math/big"
 )
 
+func FactorialIterative(n int64) (*big.Int, error) {
+	if n < 0 {
+		return nil, fmt.Errorf("factorial: argument must be a non-negative integer, got %d", n)
+	}
+	result := big.NewInt(1)
+	for i := int64(2); i <= n; i++ {
+		result.Mul(result, big.NewInt(i))
+	}
+	return result, nil
+}
+
 func FactorialRecursive(n int64) (*big.Int, error) {
 	if n < 0 {
 		return nil, fmt.Errorf("factorial: argument must be a non-negative integer, got %d", n)
