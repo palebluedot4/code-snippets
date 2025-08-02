@@ -1,4 +1,9 @@
 import functools
+import math
+
+
+def factorial(n: int) -> int:
+    return math.factorial(n)
 
 
 def factorial_iterative(n: int) -> int:
