@@ -5,6 +5,22 @@ import (
 	"math/big"
 )
 
+func FibonacciIterative(n int64) (*big.Int, error) {
+	if n < 0 {
+		return nil, fmt.Errorf("fibonacci: argument must be a non-negative integer, got %d", n)
+	}
+	if n <= 1 {
+		return big.NewInt(n), nil
+	}
+	a := big.NewInt(0)
+	b := big.NewInt(1)
+	for i := int64(2); i <= n; i++ {
+		a.Add(a, b)
+		a, b = b, a
+	}
+	return b, nil
+}
+
 func FibonacciRecursive(n int64) (*big.Int, error) {
 	if n < 0 {
 		return nil, fmt.Errorf("fibonacci: argument must be a non-negative integer, got %d", n)
