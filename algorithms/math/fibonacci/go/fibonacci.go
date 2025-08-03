@@ -1,6 +1,25 @@
 package fibonacci
 
-import "fmt"
+import (
+	"fmt"
+	"math/big"
+)
+
+func FibonacciRecursive(n int64) (*big.Int, error) {
+	if n < 0 {
+		return nil, fmt.Errorf("fibonacci: argument must be a non-negative integer, got %d", n)
+	}
+	return fibonacciRecursive(new(big.Int).SetInt64(n)), nil
+}
+
+func fibonacciRecursive(n *big.Int) *big.Int {
+	if n.Cmp(big.NewInt(1)) <= 0 {
+		return n
+	}
+	nMinus1 := new(big.Int).Sub(n, big.NewInt(1))
+	nMinus2 := new(big.Int).Sub(n, big.NewInt(2))
+	return new(big.Int).Add(fibonacciRecursive(nMinus1), fibonacciRecursive(nMinus2))
+}
 
 const (
 	// The 93rd is the largest fibonacci number that fits in uint64
