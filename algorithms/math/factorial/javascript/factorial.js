@@ -1,4 +1,4 @@
-function factorialIterative(n) {
+function factorial(n) {
   if (!Number.isInteger(n) || n < 0) {
     throw new Error(
       `Factorial argument must be a non-negative integer, got ${n}`
