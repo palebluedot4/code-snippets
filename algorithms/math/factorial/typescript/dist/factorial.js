@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.factorialIterative = factorialIterative;
+exports.factorial = factorial;
 exports.factorialRecursive = factorialRecursive;
-function factorialIterative(n) {
+function factorial(n) {
     const num = typeof n === "bigint" ? n : BigInt(n);
     if (num < 0n) {
         throw new RangeError(`Factorial argument must be a non-negative integer, got ${n}`);

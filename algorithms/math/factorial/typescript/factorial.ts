@@ -1,4 +1,4 @@
-export function factorialIterative(n: number | bigint): bigint {
+export function factorial(n: number | bigint): bigint {
   const num = typeof n === "bigint" ? n : BigInt(n);
   if (num < 0n) {
     throw new RangeError(
