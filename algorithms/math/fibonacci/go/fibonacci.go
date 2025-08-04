@@ -5,7 +5,7 @@ import (
 	"math/big"
 )
 
-func FibonacciIterative(n int64) (*big.Int, error) {
+func Fibonacci(n int64) (*big.Int, error) {
 	if n < 0 {
 		return nil, fmt.Errorf("fibonacci: argument must be a non-negative integer, got %d", n)
 	}
