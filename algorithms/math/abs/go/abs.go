@@ -49,3 +49,23 @@ func AbsBitwiseFloat[T constraints.Float](x T) T {
 		panic(fmt.Sprintf("abs: unexpected type %T", x))
 	}
 }
+
+func AbsIEEEBits[T constraints.Signed | constraints.Float](x T) T {
+	switch any(x).(type) {
+	case float32:
+		if *(*uint32)(unsafe.Pointer(&x))&(1<<31) != 0 {
+			return -x
+		}
+		return x
+	case float64:
+		if *(*uint64)(unsafe.Pointer(&x))&(1<<63) != 0 {
+			return -x
+		}
+		return x
+	default:
+		if x < 0 {
+			return -x
+		}
+		return x
+	}
+}
