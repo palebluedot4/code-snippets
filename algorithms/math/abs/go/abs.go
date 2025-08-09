@@ -2,6 +2,7 @@ package abs
 
 import (
 	"math"
+	"unsafe"
 
 	"golang.org/x/exp/constraints"
 )
@@ -26,4 +27,11 @@ func AbsIEEE[T constraints.Signed | constraints.Float](x T) T {
 		}
 		return x
 	}
+}
+
+func AbsBitwiseSigned[T constraints.Signed](x T) T {
+	const bitsPerByte = 8
+	signBit := unsafe.Sizeof(x)*bitsPerByte - 1
+	mask := x >> signBit
+	return (x + mask) ^ mask
 }
