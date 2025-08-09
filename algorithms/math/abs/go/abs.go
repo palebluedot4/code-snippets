@@ -1,6 +1,7 @@
 package abs
 
 import (
+	"fmt"
 	"math"
 	"unsafe"
 
@@ -34,4 +35,17 @@ func AbsBitwiseSigned[T constraints.Signed](x T) T {
 	signBit := unsafe.Sizeof(x)*bitsPerByte - 1
 	mask := x >> signBit
 	return (x + mask) ^ mask
+}
+
+func AbsBitwiseFloat[T constraints.Float](x T) T {
+	switch any(x).(type) {
+	case float32:
+		bits := *(*uint32)(unsafe.Pointer(&x)) &^ (1 << 31)
+		return *(*T)(unsafe.Pointer(&bits))
+	case float64:
+		bits := *(*uint64)(unsafe.Pointer(&x)) &^ (1 << 63)
+		return *(*T)(unsafe.Pointer(&bits))
+	default:
+		panic(fmt.Sprintf("abs: unexpected type %T", x))
+	}
 }
