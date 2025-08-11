@@ -1,4 +1,4 @@
-package abs
+package mathutil
 
 import (
 	"fmt"

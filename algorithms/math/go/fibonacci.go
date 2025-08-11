@@ -1,4 +1,4 @@
-package fibonacci
+package mathutil
 
 import (
 	"fmt"

@@ -1,7 +1,3 @@
 go 1.24
 
-use (
-	./algorithms/math/abs/go
-	./algorithms/math/factorial/go
-	./algorithms/math/fibonacci/go
-)
+use ./algorithms/math/go
