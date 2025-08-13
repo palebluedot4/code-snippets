@@ -7,14 +7,14 @@ import (
 
 func Factorial(n int64) (*big.Int, error) {
 	if n < 0 {
-		return nil, fmt.Errorf("factorial: argument must be a non-negative integer, got %d", n)
+		return nil, fmt.Errorf("factorial: argument must be non-negative, got %d", n)
 	}
 	return new(big.Int).MulRange(1, n), nil
 }
 
 func FactorialIterative(n int64) (*big.Int, error) {
 	if n < 0 {
-		return nil, fmt.Errorf("factorial: argument must be a non-negative integer, got %d", n)
+		return nil, fmt.Errorf("factorial: argument must be non-negative, got %d", n)
 	}
 	result := big.NewInt(1)
 	for i := int64(2); i <= n; i++ {
@@ -25,7 +25,7 @@ func FactorialIterative(n int64) (*big.Int, error) {
 
 func FactorialRecursive(n int64) (*big.Int, error) {
 	if n < 0 {
-		return nil, fmt.Errorf("factorial: argument must be a non-negative integer, got %d", n)
+		return nil, fmt.Errorf("factorial: argument must be non-negative, got %d", n)
 	}
 	return factorialRecursive(new(big.Int).SetInt64(n)), nil
 }
@@ -44,7 +44,7 @@ const (
 
 func FactorialUint64Iterative(n int) (uint64, error) {
 	if n < 0 {
-		return 0, fmt.Errorf("factorial: argument must be a non-negative integer, got %d", n)
+		return 0, fmt.Errorf("factorial: argument must be non-negative, got %d", n)
 	}
 	if n > MaxUint64Factorial {
 		return 0, fmt.Errorf("factorial: %d! would overflow uint64", n)
@@ -58,7 +58,7 @@ func FactorialUint64Iterative(n int) (uint64, error) {
 
 func FactorialUint64Recursive(n int) (uint64, error) {
 	if n < 0 {
-		return 0, fmt.Errorf("factorial: argument must be a non-negative integer, got %d", n)
+		return 0, fmt.Errorf("factorial: argument must be non-negative, got %d", n)
 	}
 	if n > MaxUint64Factorial {
 		return 0, fmt.Errorf("factorial: %d! would overflow uint64", n)
