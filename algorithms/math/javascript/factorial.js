@@ -1,7 +1,7 @@
 function factorial(n) {
   if (!Number.isInteger(n) || n < 0) {
     throw new Error(
-      `Factorial argument must be a non-negative integer, got ${n}`
+      `factorial() argument must be a non-negative integer, got ${n}`
     );
   }
   if (n === 0) {
@@ -18,7 +18,7 @@ function factorial(n) {
 function factorialRecursive(n) {
   if (!Number.isInteger(n) || n < 0) {
     throw new Error(
-      `Factorial argument must be a non-negative integer, got ${n}`
+      `factorialRecursive() argument must be a non-negative integer, got ${n}`
     );
   }
   const calculate = (x) => {
