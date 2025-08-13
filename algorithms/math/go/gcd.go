@@ -13,10 +13,10 @@ func GCD(a, b *big.Int) (*big.Int, error) {
 }
 
 func GCDInt64(a, b int64) int64 {
-	a = Abs(a)
-	b = Abs(b)
-	for b != 0 {
-		a, b = b, a%b
+	absA := Abs(a)
+	absB := Abs(b)
+	for absB != 0 {
+		absA, absB = absB, absA%absB
 	}
-	return a
+	return absA
 }
