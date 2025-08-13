@@ -2,10 +2,6 @@ import functools
 
 
 def fibonacci(n: int) -> int:
-    if not isinstance(n, int):
-        raise TypeError(
-            f"fibonacci_iterative() argument must be an integer, got {type(n).__name__}"
-        )
     if n < 0:
         raise ValueError(
             f"fibonacci_iterative() argument must be a non-negative integer, got {n}"
@@ -20,10 +16,6 @@ def fibonacci(n: int) -> int:
 
 @functools.lru_cache(maxsize=None)
 def fibonacci_recursive(n: int) -> int:
-    if not isinstance(n, int):
-        raise TypeError(
-            f"fibonacci_recursive() argument must be an integer, got {type(n).__name__}"
-        )
     if n < 0:
         raise ValueError(
             f"fibonacci_recursive() argument must be a non-negative integer, got {n}"

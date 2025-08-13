@@ -7,10 +7,6 @@ def factorial(n: int) -> int:
 
 
 def factorial_iterative(n: int) -> int:
-    if not isinstance(n, int):
-        raise TypeError(
-            f"factorial_iterative() argument must be an integer, got {type(n).__name__}"
-        )
     if n < 0:
         raise ValueError(
             f"factorial_iterative() argument must be a non-negative integer, got {n}"
@@ -23,10 +19,6 @@ def factorial_iterative(n: int) -> int:
 
 @functools.lru_cache(maxsize=None)
 def factorial_recursive(n: int) -> int:
-    if not isinstance(n, int):
-        raise TypeError(
-            f"factorial_recursive() argument must be an integer, got {type(n).__name__}"
-        )
     if n < 0:
         raise ValueError(
             f"factorial_recursive() argument must be a non-negative integer, got {n}"
