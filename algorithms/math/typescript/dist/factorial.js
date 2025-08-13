@@ -5,7 +5,7 @@ exports.factorialRecursive = factorialRecursive;
 function factorial(n) {
     const num = typeof n === "bigint" ? n : BigInt(n);
     if (num < 0n) {
-        throw new RangeError(`Factorial argument must be a non-negative integer, got ${n}`);
+        throw new RangeError(`factorial() argument must be a non-negative integer, got ${n}`);
     }
     if (num === 0n) {
         return 1n;
@@ -19,7 +19,7 @@ function factorial(n) {
 function factorialRecursive(n) {
     const num = typeof n === "bigint" ? n : BigInt(n);
     if (num < 0n) {
-        throw new RangeError(`Factorial argument must be a non-negative integer, got ${n}`);
+        throw new RangeError(`factorialRecursive() argument must be a non-negative integer, got ${n}`);
     }
     const calculate = (x) => {
         if (x === 0n) {
