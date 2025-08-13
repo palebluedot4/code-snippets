@@ -7,7 +7,7 @@ import (
 
 func Fibonacci(n int64) (*big.Int, error) {
 	if n < 0 {
-		return nil, fmt.Errorf("fibonacci: argument must be a non-negative integer, got %d", n)
+		return nil, fmt.Errorf("fibonacci: argument must be non-negative, got %d", n)
 	}
 	if n <= 1 {
 		return big.NewInt(n), nil
@@ -23,7 +23,7 @@ func Fibonacci(n int64) (*big.Int, error) {
 
 func FibonacciRecursive(n int64) (*big.Int, error) {
 	if n < 0 {
-		return nil, fmt.Errorf("fibonacci: argument must be a non-negative integer, got %d", n)
+		return nil, fmt.Errorf("fibonacci: argument must be non-negative, got %d", n)
 	}
 	return fibonacciRecursive(new(big.Int).SetInt64(n)), nil
 }
@@ -44,7 +44,7 @@ const (
 
 func FibonacciUint64Iterative(n int) (uint64, error) {
 	if n < 0 {
-		return 0, fmt.Errorf("fibonacci: argument must be a non-negative integer, got %d", n)
+		return 0, fmt.Errorf("fibonacci: argument must be non-negative, got %d", n)
 	}
 	if n > MaxUint64Fibonacci {
 		return 0, fmt.Errorf("fibonacci: %dth fibonacci number would overflow uint64", n)
@@ -62,7 +62,7 @@ func FibonacciUint64Iterative(n int) (uint64, error) {
 
 func FibonacciUint64Recursive(n int) (uint64, error) {
 	if n < 0 {
-		return 0, fmt.Errorf("fibonacci: argument must be a non-negative integer, got %d", n)
+		return 0, fmt.Errorf("fibonacci: argument must be non-negative, got %d", n)
 	}
 	if n > MaxUint64Fibonacci {
 		return 0, fmt.Errorf("fibonacci: %dth fibonacci number would overflow uint64", n)
