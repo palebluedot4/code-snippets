@@ -34,7 +34,8 @@ func factorialRecursive(n *big.Int) *big.Int {
 	if n.Cmp(big.NewInt(1)) <= 0 {
 		return big.NewInt(1)
 	}
-	return new(big.Int).Mul(n, factorialRecursive(new(big.Int).Sub(n, big.NewInt(1))))
+	nMinus1 := new(big.Int).Sub(n, big.NewInt(1))
+	return new(big.Int).Mul(n, factorialRecursive(nMinus1))
 }
 
 const (
