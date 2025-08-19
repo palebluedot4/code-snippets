@@ -7,5 +7,5 @@ def abs_value(x: T) -> T:
     return abs(x)
 
 
-def _abs_value(x: T) -> T:
+def __abs_value(x: T) -> T:
     return x if x >= 0 else -x
