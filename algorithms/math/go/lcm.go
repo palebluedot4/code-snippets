@@ -15,8 +15,8 @@ func LCM(a, b *big.Int) (*big.Int, error) {
 	absA := new(big.Int).Abs(a)
 	absB := new(big.Int).Abs(b)
 	gcd := new(big.Int).GCD(nil, nil, absA, absB)
-	result := new(big.Int).Div(absA, gcd)
-	return result.Mul(result, absB), nil
+	res := new(big.Int).Div(absA, gcd)
+	return res.Mul(res, absB), nil
 }
 
 func LCMInt64(a, b int64) (int64, error) {

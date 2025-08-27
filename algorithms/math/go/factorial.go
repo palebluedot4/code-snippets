@@ -16,11 +16,11 @@ func FactorialIterative(n int64) (*big.Int, error) {
 	if n < 0 {
 		return nil, fmt.Errorf("factorial: argument must be non-negative, got %d", n)
 	}
-	result := big.NewInt(1)
+	res := big.NewInt(1)
 	for i := int64(2); i <= n; i++ {
-		result.Mul(result, big.NewInt(i))
+		res.Mul(res, big.NewInt(i))
 	}
-	return result, nil
+	return res, nil
 }
 
 func FactorialRecursive(n int64) (*big.Int, error) {
@@ -50,11 +50,11 @@ func FactorialUint64Iterative(n int) (uint64, error) {
 	if n > MaxUint64Factorial {
 		return 0, fmt.Errorf("factorial: %d! would overflow uint64", n)
 	}
-	result := uint64(1)
+	res := uint64(1)
 	for i := 2; i <= n; i++ {
-		result *= uint64(i)
+		res *= uint64(i)
 	}
-	return result, nil
+	return res, nil
 }
 
 func FactorialUint64Recursive(n int) (uint64, error) {
