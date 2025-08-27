@@ -5,7 +5,7 @@ def gcd(a: int, b: int) -> int:
     return math.gcd(a, b)
 
 
-def __gcd(a: int, b: int) -> int:
+def _manual_gcd(a: int, b: int) -> int:
     absA = abs(a)
     absB = abs(b)
     while absB:
