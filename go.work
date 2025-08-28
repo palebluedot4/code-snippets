@@ -1,3 +1,6 @@
 go 1.25
 
-use ./algorithms/math/go
+use (
+	./algorithms/math/go
+	./cookbook/sequence-manipulation/reversal/go
+)
