@@ -13,3 +13,7 @@ def reverse_list(lst: List[T]) -> List[T]:
 
 def reversed_sequence(seq: Sequence[T]) -> List[T]:
     return list(seq[::-1])
+
+
+def reverse_list_in_place(lst: List[T]) -> None:
+    lst.reverse()
