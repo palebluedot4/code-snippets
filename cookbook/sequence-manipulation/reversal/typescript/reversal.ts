@@ -1,0 +1,3 @@
+export function reverseString(s: string): string {
+  return Array.from(s).reverse().join("");
+}
