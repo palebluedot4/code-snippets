@@ -17,3 +17,11 @@ def reversed_sequence(seq: Sequence[T]) -> List[T]:
 
 def reverse_list_in_place(lst: List[T]) -> None:
     lst.reverse()
+
+
+def _manual_reverse_list_in_place(lst: List[T]) -> None:
+    left, right = 0, len(lst) - 1
+    while left < right:
+        lst[left], lst[right] = lst[right], lst[left]
+        left += 1
+        right -= 1
