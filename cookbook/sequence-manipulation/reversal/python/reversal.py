@@ -1,4 +1,4 @@
-from typing import List, TypeVar
+from typing import List, Sequence, TypeVar
 
 T = TypeVar("T")
 
@@ -9,3 +9,7 @@ def reverse_string(s: str) -> str:
 
 def reverse_list(lst: List[T]) -> List[T]:
     return lst[::-1]
+
+
+def reversed_sequence(seq: Sequence[T]) -> List[T]:
+    return list(seq[::-1])
