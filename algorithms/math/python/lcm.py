@@ -1,6 +1,6 @@
 import math
 
-from .gcd import _manual_gcd
+from algorithms.math.python.gcd import _manual_gcd
 
 
 def lcm(a: int, b: int) -> int:
