@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.reverseString = reverseString;
 exports.reverseArray = reverseArray;
 exports.reverseArrayInPlace = reverseArrayInPlace;
-exports.manualReverseArrayInPlace = manualReverseArrayInPlace;
+exports.reverseArrayInPlaceManual = reverseArrayInPlaceManual;
 function reverseString(s) {
     return Array.from(s).reverse().join("");
 }
@@ -13,7 +13,7 @@ function reverseArray(arr) {
 function reverseArrayInPlace(arr) {
     arr.reverse();
 }
-function manualReverseArrayInPlace(arr) {
+function reverseArrayInPlaceManual(arr) {
     let left = 0;
     let right = arr.length - 1;
     while (left < right) {
