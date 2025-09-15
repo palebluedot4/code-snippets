@@ -1,10 +1,10 @@
-from typing import TypeVar
+from typing import TypeVar, cast
 
 T = TypeVar("T", int, float)
 
 
 def abs_value(x: T) -> T:
-    return abs(x)
+    return cast(T, abs(x))
 
 
 def _abs_value_manual(x: T) -> T:
