@@ -19,7 +19,7 @@ def reverse_list_in_place(lst: list[T]) -> None:
     lst.reverse()
 
 
-def _manual_reverse_list_in_place(lst: list[T]) -> None:
+def _reverse_list_in_place_manual(lst: list[T]) -> None:
     left, right = 0, len(lst) - 1
     while left < right:
         lst[left], lst[right] = lst[right], lst[left]
