@@ -1,18 +1,11 @@
-from typing import Sequence, TypeVar
+from typing import TypeVar
 
+S = TypeVar("S", str, list, tuple)
 T = TypeVar("T")
 
 
-def reverse_string(s: str) -> str:
-    return s[::-1]
-
-
-def reverse_list(lst: list[T]) -> list[T]:
-    return lst[::-1]
-
-
-def reversed_sequence(seq: Sequence[T]) -> list[T]:
-    return list(seq[::-1])
+def reversed_sliceable(seq: S) -> S:
+    return seq[::-1]
 
 
 def reverse_list_in_place(lst: list[T]) -> None:
