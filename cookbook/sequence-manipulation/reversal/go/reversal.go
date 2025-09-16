@@ -8,12 +8,10 @@ func ReverseString(s string) string {
 	return string(runes)
 }
 
-func ReverseSlice[T any](s []T) []T {
-	reversed := make([]T, len(s))
-	for i := range s {
-		reversed[i] = s[len(s)-1-i]
-	}
-	return reversed
+func ReverseSlice[S ~[]E, E any](s S) S {
+	clone := slices.Clone(s)
+	slices.Reverse(clone)
+	return clone
 }
 
 func ReverseSliceInPlace[T any](s []T) {
