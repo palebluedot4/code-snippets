@@ -17,3 +17,12 @@ func ReverseSlice[S ~[]E, E any](s S) S {
 func ReverseSliceInPlace[S ~[]E, E any](s S) {
 	slices.Reverse(s)
 }
+
+func reverseSliceManual[S ~[]E, E any](s S) S {
+	reversed := make(S, len(s))
+	for i := range s {
+		reversed[i] = s[len(s)-1-i]
+	}
+	return reversed
+}
+
