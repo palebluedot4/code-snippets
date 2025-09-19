@@ -19,6 +19,9 @@ func ReverseSliceInPlace[S ~[]E, E any](s S) {
 }
 
 func reverseSliceManual[S ~[]E, E any](s S) S {
+	if s == nil {
+		return nil
+	}
 	reversed := make(S, len(s))
 	for i := range s {
 		reversed[i] = s[len(s)-1-i]
