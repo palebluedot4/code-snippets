@@ -1,4 +1,4 @@
-from typing import TypeVar
+from typing import Any, Callable, TypeVar
 
 import pytest
 import reversal
@@ -42,3 +42,35 @@ def test_reversed_sliceable(input_seq: S, expected: S) -> None:
     assert expected == actual
     assert type(input_seq) is type(actual)
     assert original_copy == input_seq
+
+
+@pytest.mark.parametrize(
+    "reversal_func",
+    [
+        pytest.param(reversal.reverse_list_in_place, id="standard_in_place"),
+        pytest.param(reversal._reverse_list_in_place_manual, id="manual_in_place"),
+    ],
+)
+@pytest.mark.parametrize(
+    ("initial_list", "expected"),
+    [
+        pytest.param([], [], id="empty_list"),
+        pytest.param([1], [1], id="single_element_list"),
+        pytest.param([1, 2, 3, 4], [4, 3, 2, 1], id="even_elements_list"),
+        pytest.param([1, 2, 3, 4, 5], [5, 4, 3, 2, 1], id="odd_elements_list"),
+        pytest.param(["a", "b", "c"], ["c", "b", "a"], id="string_list"),
+        pytest.param([1, "two", 3.0], [3.0, "two", 1], id="mixed_types_list"),
+        pytest.param([None, True, False], [False, True, None], id="boolean_none_list"),
+        pytest.param([1, 2, 2, 1], [1, 2, 2, 1], id="palindrome_list"),
+    ],
+)
+def test_in_place_reversal_functions(
+    reversal_func: Callable[[list[Any]], None],
+    initial_list: list[Any],
+    expected: list[Any],
+) -> None:
+    actual_list = list(initial_list)
+
+    reversal_func(actual_list)
+
+    assert expected == actual_list
