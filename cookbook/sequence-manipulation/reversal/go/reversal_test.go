@@ -2,6 +2,7 @@ package reversal_test
 
 import (
 	"reflect"
+	"slices"
 	"testing"
 
 	. "github.com/palebluedot4/code-snippets/cookbook/sequence-manipulation/reversal"
@@ -158,6 +159,91 @@ func TestReverseSlice(t *testing.T) {
 				}
 				if !reflect.DeepEqual(originalInput, tt.input) {
 					t.Errorf("ReverseSlice() modified the original slice, it became %v", tt.input)
+				}
+			})
+		}
+	})
+}
+
+func TestReverseSliceInPlace(t *testing.T) {
+	t.Run("slice of ints", func(t *testing.T) {
+		tests := []struct {
+			name  string
+			input []int
+			want  []int
+		}{
+			{
+				name:  "nil slice",
+				input: nil,
+				want:  nil,
+			},
+			{
+				name:  "empty slice",
+				input: []int{},
+				want:  []int{},
+			},
+			{
+				name:  "single element",
+				input: []int{1},
+				want:  []int{1},
+			},
+			{
+				name:  "even number of elements",
+				input: []int{1, 2, 3, 4},
+				want:  []int{4, 3, 2, 1},
+			},
+			{
+				name:  "odd number of elements",
+				input: []int{1, 2, 3, 4, 5},
+				want:  []int{5, 4, 3, 2, 1},
+			},
+		}
+
+		for _, tt := range tests {
+			t.Run(tt.name, func(t *testing.T) {
+				got := slices.Clone(tt.input)
+				ReverseSliceInPlace(got)
+				if !reflect.DeepEqual(tt.want, got) {
+					t.Errorf("ReverseSliceInPlace() modified slice to %v, want %v", got, tt.want)
+				}
+			})
+		}
+	})
+
+	t.Run("slice of strings", func(t *testing.T) {
+		tests := []struct {
+			name  string
+			input []string
+			want  []string
+		}{
+			{
+				name:  "nil slice",
+				input: nil,
+				want:  nil,
+			},
+			{
+				name:  "empty slice",
+				input: []string{},
+				want:  []string{},
+			},
+			{
+				name:  "even number of elements",
+				input: []string{"hello", "world"},
+				want:  []string{"world", "hello"},
+			},
+			{
+				name:  "odd number of elements",
+				input: []string{"hello", "world", "!"},
+				want:  []string{"!", "world", "hello"},
+			},
+		}
+
+		for _, tt := range tests {
+			t.Run(tt.name, func(t *testing.T) {
+				got := slices.Clone(tt.input)
+				ReverseSliceInPlace(got)
+				if !reflect.DeepEqual(tt.want, got) {
+					t.Errorf("ReverseSliceInPlace() modified slice to %v, want %v", got, tt.want)
 				}
 			})
 		}
