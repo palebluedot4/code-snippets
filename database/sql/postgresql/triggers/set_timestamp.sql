@@ -1,5 +1,5 @@
 CREATE TRIGGER set_timestamp
-    BEFORE UPDATE ON example_table
+    BEFORE UPDATE ON auth.users
     FOR EACH ROW
-    EXECUTE PROCEDURE trigger_set_timestamp();
+    EXECUTE PROCEDURE public.trigger_set_timestamp();
 
