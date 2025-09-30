@@ -32,6 +32,11 @@ S = TypeVar("S", str, list, tuple, bytes)
         pytest.param((1, 2, 3, 4, 5), (5, 4, 3, 2, 1), id="odd_elements_tuple"),
         pytest.param(("a", "b", "c"), ("c", "b", "a"), id="string_elements_tuple"),
         pytest.param((1, "a", True), (True, "a", 1), id="mixed_types_tuple"),
+        # bytes
+        pytest.param(b"", b"", id="empty_bytes"),
+        pytest.param(b"a", b"a", id="single_byte"),
+        pytest.param(b"abcd", b"dcba", id="multiple_bytes"),
+        pytest.param(b"\x01\x02\x03", b"\x03\x02\x01", id="hex_bytes"),
     ],
 )
 def test_reversed_sliceable(input_seq: S, expected: S) -> None:
