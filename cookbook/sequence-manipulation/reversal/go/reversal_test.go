@@ -60,14 +60,14 @@ func TestReverseString(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			got := ReverseString(tt.input)
 			if got != tt.want {
-				t.Errorf("ReverseString(%q) = %q, want %q", tt.input, got, tt.want)
+				t.Errorf("ReverseString(%q) got %q, want %q", tt.input, got, tt.want)
 			}
 		})
 	}
 }
 
 func TestReverseSlice(t *testing.T) {
-	t.Run("slice of ints", func(t *testing.T) {
+	t.Run("int slice", func(t *testing.T) {
 		tests := []struct {
 			name  string
 			input []int
@@ -102,23 +102,23 @@ func TestReverseSlice(t *testing.T) {
 
 		for _, tt := range tests {
 			t.Run(tt.name, func(t *testing.T) {
-				var originalInput []int
+				var clone []int
 				if tt.input != nil {
-					originalInput = make([]int, len(tt.input))
-					copy(originalInput, tt.input)
+					clone = make([]int, len(tt.input))
+					copy(clone, tt.input)
 				}
 				got := ReverseSlice(tt.input)
 				if !reflect.DeepEqual(tt.want, got) {
-					t.Errorf("ReverseSlice() got = %v, want %v", got, tt.want)
+					t.Errorf("ReverseSlice() got %v, want %v", got, tt.want)
 				}
-				if !reflect.DeepEqual(originalInput, tt.input) {
-					t.Errorf("ReverseSlice() modified the original slice, it became %v", tt.input)
+				if !reflect.DeepEqual(clone, tt.input) {
+					t.Errorf("ReverseSlice() modified the input, got %v, want %v", tt.input, clone)
 				}
 			})
 		}
 	})
 
-	t.Run("slice of strings", func(t *testing.T) {
+	t.Run("string slice", func(t *testing.T) {
 		tests := []struct {
 			name  string
 			input []string
@@ -148,17 +148,17 @@ func TestReverseSlice(t *testing.T) {
 
 		for _, tt := range tests {
 			t.Run(tt.name, func(t *testing.T) {
-				var originalInput []string
+				var clone []string
 				if tt.input != nil {
-					originalInput = make([]string, len(tt.input))
-					copy(originalInput, tt.input)
+					clone = make([]string, len(tt.input))
+					copy(clone, tt.input)
 				}
 				got := ReverseSlice(tt.input)
 				if !reflect.DeepEqual(tt.want, got) {
-					t.Errorf("ReverseSlice() got = %v, want %v", got, tt.want)
+					t.Errorf("ReverseSlice() got %v, want %v", got, tt.want)
 				}
-				if !reflect.DeepEqual(originalInput, tt.input) {
-					t.Errorf("ReverseSlice() modified the original slice, it became %v", tt.input)
+				if !reflect.DeepEqual(clone, tt.input) {
+					t.Errorf("ReverseSlice() modified the input, got %v, want %v", tt.input, clone)
 				}
 			})
 		}
@@ -166,7 +166,7 @@ func TestReverseSlice(t *testing.T) {
 }
 
 func TestReverseSliceInPlace(t *testing.T) {
-	t.Run("slice of ints", func(t *testing.T) {
+	t.Run("int slice", func(t *testing.T) {
 		tests := []struct {
 			name  string
 			input []int
@@ -204,13 +204,13 @@ func TestReverseSliceInPlace(t *testing.T) {
 				got := slices.Clone(tt.input)
 				ReverseSliceInPlace(got)
 				if !reflect.DeepEqual(tt.want, got) {
-					t.Errorf("ReverseSliceInPlace() modified slice to %v, want %v", got, tt.want)
+					t.Errorf("ReverseSliceInPlace() modified the input, got %v, want %v", got, tt.want)
 				}
 			})
 		}
 	})
 
-	t.Run("slice of strings", func(t *testing.T) {
+	t.Run("string slice", func(t *testing.T) {
 		tests := []struct {
 			name  string
 			input []string
@@ -243,7 +243,7 @@ func TestReverseSliceInPlace(t *testing.T) {
 				got := slices.Clone(tt.input)
 				ReverseSliceInPlace(got)
 				if !reflect.DeepEqual(tt.want, got) {
-					t.Errorf("ReverseSliceInPlace() modified slice to %v, want %v", got, tt.want)
+					t.Errorf("ReverseSliceInPlace() modified the input, got %v, want %v", got, tt.want)
 				}
 			})
 		}
