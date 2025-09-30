@@ -1,6 +1,6 @@
 from typing import TypeVar
 
-S = TypeVar("S", str, list, tuple)
+S = TypeVar("S", str, list, tuple, bytes)
 T = TypeVar("T")
 
 

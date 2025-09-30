@@ -3,7 +3,7 @@ from typing import Any, Callable, TypeVar
 import pytest
 import reversal
 
-S = TypeVar("S", str, list, tuple)
+S = TypeVar("S", str, list, tuple, bytes)
 
 
 @pytest.mark.parametrize(
