@@ -28,7 +28,7 @@ describe("reverseString", () => {
   ];
 
   test.each(testCases)(
-    "should correctly reverse: $name",
+    "should reverse the string for: $name",
     ({ input, expected }) => {
       const actual = reverseString(input);
 
@@ -62,14 +62,14 @@ describe("reverseArray", () => {
       expected: [3.0, "two", 1],
     },
     {
-      name: "null and undefined elements array",
-      input: [1, null, "2", undefined],
-      expected: [undefined, "2", null, 1],
+      name: "mixed primitive and reference types array",
+      input: [1, "two", { three: 3 }, [4], undefined, null],
+      expected: [null, undefined, [4], { three: 3 }, "two", 1],
     },
   ];
 
   test.each(testCases)(
-    "should reverse an $name without modifying the original",
+    "should return a new reversed array for: $name",
     ({ input, expected }) => {
       const originalArray = [...input];
 
@@ -77,6 +77,9 @@ describe("reverseArray", () => {
 
       expect(actual).toEqual(expected);
       expect(input).toEqual(originalArray);
+      if (input.length > 0) {
+        expect(actual).not.toBe(originalArray);
+      }
     }
   );
 });
@@ -84,7 +87,7 @@ describe("reverseArray", () => {
 describe.each([
   { fn: reverseArrayInPlace, name: "reverseArrayInPlace" },
   { fn: reverseArrayInPlaceManual, name: "reverseArrayInPlaceManual" },
-])("in-place reversal with $name", ({ fn }) => {
+])("$name", ({ fn }) => {
   const testCases = [
     { name: "empty array", initial: [], expected: [] },
     { name: "single element array", initial: [1], expected: [1] },
@@ -109,14 +112,14 @@ describe.each([
       expected: [3.0, "two", 1],
     },
     {
-      name: "null and undefined elements array",
-      initial: [1, null, "2", undefined],
-      expected: [undefined, "2", null, 1],
+      name: "mixed primitive and reference types array",
+      initial: [1, "2", { three: 3 }, [4], undefined, null],
+      expected: [null, undefined, [4], { three: 3 }, "2", 1],
     },
   ];
 
   test.each(testCases)(
-    "should correctly reverse an $name in-place",
+    "should mutate the array in-place for: $name",
     ({ initial, expected }) => {
       const actual = [...initial];
 
