@@ -1,6 +1,11 @@
 import { describe, expect, test } from "vitest";
 
-import { reverseArray, reverseString } from "./reversal.js";
+import {
+  reverseArray,
+  reverseArrayInPlace,
+  reverseArrayInPlaceManual,
+  reverseString,
+} from "./reversal.js";
 
 describe("reverseString", () => {
   const testCases = [
@@ -70,6 +75,43 @@ describe("reverseArray", () => {
       if (input.length > 0) {
         expect(actual).not.toBe(originalArray);
       }
+    }
+  );
+});
+
+describe.each([
+  { fn: reverseArrayInPlace, name: "reverseArrayInPlace" },
+  { fn: reverseArrayInPlaceManual, name: "reverseArrayInPlaceManual" },
+])("$name", ({ fn }) => {
+  const testCases = [
+    { name: "empty array", initial: [], expected: [] },
+    { name: "single element array", initial: [1], expected: [1] },
+    {
+      name: "even elements array",
+      initial: [1, 2, 3, 4],
+      expected: [4, 3, 2, 1],
+    },
+    {
+      name: "odd elements array",
+      initial: [1, 2, 3, 4, 5],
+      expected: [5, 4, 3, 2, 1],
+    },
+    {
+      name: "mixed primitive and reference types array",
+      initial: [1, "2", { three: 3 }, [4], undefined, null],
+      expected: [null, undefined, [4], { three: 3 }, "2", 1],
+    },
+  ];
+
+  test.each(testCases)(
+    "should mutate the array in-place for: $name",
+    ({ initial, expected }) => {
+      const actual = [...initial];
+
+      const returnValue = fn(actual);
+
+      expect(actual).toEqual(expected);
+      expect(returnValue).toBeUndefined();
     }
   );
 });
