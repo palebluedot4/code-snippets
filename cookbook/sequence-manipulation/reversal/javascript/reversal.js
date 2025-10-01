@@ -24,3 +24,18 @@ export function reverseArrayInPlace(arr) {
   }
   arr.reverse();
 }
+
+export function reverseArrayInPlaceManual(arr) {
+  if (!Array.isArray(arr)) {
+    throw new TypeError(
+      `reverseArrayInPlaceManual() argument must be array, got: ${typeof arr}`
+    );
+  }
+  let left = 0;
+  let right = arr.length - 1;
+  while (left < right) {
+    [arr[left], arr[right]] = [arr[right], arr[left]];
+    left++;
+    right--;
+  }
+}
