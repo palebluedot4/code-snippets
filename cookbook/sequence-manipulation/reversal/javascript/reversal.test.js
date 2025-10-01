@@ -115,3 +115,53 @@ describe.each([
     }
   );
 });
+
+describe("Error Handling", () => {
+  describe("reverseString", () => {
+    const invalidInputs = [
+      { name: "input of type null", value: null },
+      { name: "input of type undefined", value: undefined },
+      { name: "input of type number", value: 123 },
+      { name: "input of type object", value: {} },
+      { name: "input of type array", value: [] },
+    ];
+
+    test.each(invalidInputs)(
+      "should throw TypeError for: $name",
+      ({ value }) => {
+        const action = () => reverseString(value);
+
+        expect(action).toThrow(TypeError);
+        expect(action).toThrow(
+          `reverseString() argument must be string, got: ${typeof value}`
+        );
+      }
+    );
+  });
+
+  describe.each([
+    { fn: reverseArray, name: "reverseArray" },
+    { fn: reverseArrayInPlace, name: "reverseArrayInPlace" },
+    { fn: reverseArrayInPlaceManual, name: "reverseArrayInPlaceManual" },
+  ])("$name", ({ fn, name }) => {
+    const invalidInputs = [
+      { name: "input of type null", value: null },
+      { name: "input of type undefined", value: undefined },
+      { name: "input of type string", value: "abc" },
+      { name: "input of type number", value: 123 },
+      { name: "input of type object", value: {} },
+    ];
+
+    test.each(invalidInputs)(
+      "should throw TypeError for: $name",
+      ({ value }) => {
+        const action = () => fn(value);
+
+        expect(action).toThrow(TypeError);
+        expect(action).toThrow(
+          `${name}() argument must be array, got: ${typeof value}`
+        );
+      }
+    );
+  });
+});
