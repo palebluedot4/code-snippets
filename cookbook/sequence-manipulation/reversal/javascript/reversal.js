@@ -6,3 +6,12 @@ export function reverseString(s) {
   }
   return Array.from(s).reverse().join("");
 }
+
+export function reverseArray(arr) {
+  if (!Array.isArray(arr)) {
+    throw new TypeError(
+      `reverseArray() argument must be array, got: ${typeof arr}`
+    );
+  }
+  return arr.toReversed();
+}
