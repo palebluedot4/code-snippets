@@ -1,4 +1,9 @@
-import { reverseArray, reverseString } from "./reversal";
+import {
+  reverseArray,
+  reverseArrayInPlace,
+  reverseArrayInPlaceManual,
+  reverseString,
+} from "./reversal";
 
 describe("reverseString", () => {
   const testCases = [
@@ -70,6 +75,53 @@ describe("reverseArray", () => {
 
       expect(actual).toEqual(expected);
       expect(input).toEqual(originalArray);
+    }
+  );
+});
+
+describe.each([
+  { fn: reverseArrayInPlace, name: "reverseArrayInPlace" },
+  { fn: reverseArrayInPlaceManual, name: "reverseArrayInPlaceManual" },
+])("in-place reversal with $name", ({ fn }) => {
+  const testCases = [
+    { name: "empty array", initial: [], expected: [] },
+    { name: "single element array", initial: [1], expected: [1] },
+    {
+      name: "even elements array",
+      initial: [1, 2, 3, 4],
+      expected: [4, 3, 2, 1],
+    },
+    {
+      name: "odd elements array",
+      initial: [1, 2, 3, 4, 5],
+      expected: [5, 4, 3, 2, 1],
+    },
+    {
+      name: "string elements array",
+      initial: ["a", "b", "c"],
+      expected: ["c", "b", "a"],
+    },
+    {
+      name: "mixed type elements array",
+      initial: [1, "two", 3.0],
+      expected: [3.0, "two", 1],
+    },
+    {
+      name: "null and undefined elements array",
+      initial: [1, null, "2", undefined],
+      expected: [undefined, "2", null, 1],
+    },
+  ];
+
+  test.each(testCases)(
+    "should correctly reverse an $name in-place",
+    ({ initial, expected }) => {
+      const actual = [...initial];
+
+      const returnValue = fn(actual);
+
+      expect(actual).toEqual(expected);
+      expect(returnValue).toBeUndefined();
     }
   );
 });
