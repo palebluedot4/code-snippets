@@ -15,3 +15,12 @@ export function reverseArray(arr) {
   }
   return arr.toReversed();
 }
+
+export function reverseArrayInPlace(arr) {
+  if (!Array.isArray(arr)) {
+    throw new TypeError(
+      `reverseArrayInPlace() argument must be array, got: ${typeof arr}`
+    );
+  }
+  arr.reverse();
+}
