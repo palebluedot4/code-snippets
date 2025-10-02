@@ -5,7 +5,7 @@ exports.fibonacciRecursive = fibonacciRecursive;
 function fibonacci(n) {
     const num = typeof n === "bigint" ? n : BigInt(n);
     if (num < 0n) {
-        throw new RangeError(`fibonacci() argument must be a non-negative integer, got ${n}`);
+        throw new RangeError(`fibonacci() argument must be non-negative integer, got ${n}`);
     }
     if (num < 1n) {
         return num;
@@ -20,7 +20,7 @@ function fibonacci(n) {
 function fibonacciRecursive(n) {
     const num = typeof n === "bigint" ? n : BigInt(n);
     if (num < 0n) {
-        throw new RangeError(`fibonacciRecursive() argument must be a non-negative integer, got ${n}`);
+        throw new RangeError(`fibonacciRecursive() argument must be non-negative integer, got ${n}`);
     }
     const calculate = (x) => {
         if (x <= 1n) {
