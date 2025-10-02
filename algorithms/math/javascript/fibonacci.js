@@ -1,7 +1,12 @@
 function fibonacci(n) {
-  if (!Number.isInteger(n) || n < 0) {
-    throw new Error(
-      `fibonacci() argument must be a non-negative integer, got ${n}`
+  if (!Number.isInteger(n)) {
+    throw new TypeError(
+      `fibonacci() argument must be integer, got: ${typeof n}`
+    );
+  }
+  if (n < 0) {
+    throw new RangeError(
+      `fibonacci() argument must be non-negative integer, got ${n}`
     );
   }
   if (n <= 1) {
@@ -16,9 +21,14 @@ function fibonacci(n) {
 }
 
 function fibonacciRecursive(n) {
-  if (!Number.isInteger(n) || n < 0) {
-    throw new Error(
-      `fibonacciRecursive() argument must be a non-negative integer, got ${n}`
+  if (!Number.isInteger(n)) {
+    throw new TypeError(
+      `fibonacciRecursive() argument must be integer, got: ${typeof n}`
+    );
+  }
+  if (n < 0) {
+    throw new RangeError(
+      `fibonacciRecursive() argument must be non-negative integer, got ${n}`
     );
   }
   const calculate = (x) => {

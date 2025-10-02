@@ -1,7 +1,7 @@
 function lcm(a, b) {
   if (!Number.isInteger(a) || !Number.isInteger(b)) {
-    throw new Error(
-      `lcm() arguments must be integers, got: a=${a} (${typeof a}), b=${b} (${typeof b})`
+    throw new TypeError(
+      `lcm() arguments must be integers, got: a=${typeof a}, b=${typeof b}`
     );
   }
   if (a === 0 || b === 0) {

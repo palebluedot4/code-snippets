@@ -1,7 +1,7 @@
 function gcd(a, b) {
   if (!Number.isInteger(a) || !Number.isInteger(b)) {
-    throw new Error(
-      `gcd() arguments must be integers, got: a=${a} (${typeof a}), b=${b} (${typeof b})`
+    throw new TypeError(
+      `gcd() arguments must be integers, got: a=${typeof a}, b=${typeof b}`
     );
   }
   let absA = Math.abs(a);

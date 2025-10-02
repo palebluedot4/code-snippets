@@ -7,6 +7,6 @@ function absValue(x) {
     return x >= 0n ? x : -x;
   }
   throw new TypeError(
-    `absValue() argument must be number or bigint, got: ${x} (${type})`
+    `absValue() argument must be number or bigint, got: ${type}`
   );
 }
