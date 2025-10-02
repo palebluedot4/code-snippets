@@ -1,4 +1,4 @@
-function fibonacci(n) {
+export function fibonacci(n) {
   if (!Number.isInteger(n)) {
     throw new TypeError(
       `fibonacci() argument must be integer, got: ${typeof n}`
@@ -20,7 +20,7 @@ function fibonacci(n) {
   return b;
 }
 
-function fibonacciRecursive(n) {
+export function fibonacciRecursive(n) {
   if (!Number.isInteger(n)) {
     throw new TypeError(
       `fibonacciRecursive() argument must be integer, got: ${typeof n}`

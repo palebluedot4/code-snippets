@@ -1,4 +1,4 @@
-function factorial(n) {
+export function factorial(n) {
   if (!Number.isInteger(n)) {
     throw new TypeError(
       `factorial() argument must be integer, got: ${typeof n}`
@@ -20,7 +20,7 @@ function factorial(n) {
   return result;
 }
 
-function factorialRecursive(n) {
+export function factorialRecursive(n) {
   if (!Number.isInteger(n)) {
     throw new TypeError(
       `factorialRecursive() argument must be integer, got: ${typeof n}`

@@ -1,4 +1,4 @@
-function absValue(x) {
+export function absValue(x) {
   const type = typeof x;
   if (type === "number") {
     return Math.abs(x);

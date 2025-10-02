@@ -1,4 +1,4 @@
-function isEven(x) {
+export function isEven(x) {
   const type = typeof x;
   if (type === "number") {
     if (!Number.isInteger(x)) {
@@ -14,7 +14,7 @@ function isEven(x) {
   );
 }
 
-function isEvenBitwise(x) {
+export function isEvenBitwise(x) {
   const type = typeof x;
   if (type === "number") {
     if (!Number.isInteger(x)) {

@@ -1,4 +1,4 @@
-function lcm(a, b) {
+export function lcm(a, b) {
   if (!Number.isInteger(a) || !Number.isInteger(b)) {
     throw new TypeError(
       `lcm() arguments must be integers, got: a=${typeof a}, b=${typeof b}`

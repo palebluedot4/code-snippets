@@ -1,4 +1,4 @@
-function isOdd(x) {
+export function isOdd(x) {
   const type = typeof x;
   if (type === "number") {
     if (!Number.isInteger(x)) {
@@ -14,7 +14,7 @@ function isOdd(x) {
   );
 }
 
-function isOddBitwise(x) {
+export function isOddBitwise(x) {
   const type = typeof x;
   if (type === "number") {
     if (!Number.isInteger(x)) {

@@ -1,4 +1,4 @@
-function gcd(a, b) {
+export function gcd(a, b) {
   if (!Number.isInteger(a) || !Number.isInteger(b)) {
     throw new TypeError(
       `gcd() arguments must be integers, got: a=${typeof a}, b=${typeof b}`
