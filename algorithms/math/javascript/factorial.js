@@ -1,3 +1,9 @@
+/**
+ * @param {number} n
+ * @returns {bigint}
+ * @throws {TypeError}
+ * @throws {RangeError}
+ */
 export function factorial(n) {
   if (!Number.isInteger(n)) {
     throw new TypeError(
@@ -20,6 +26,12 @@ export function factorial(n) {
   return result;
 }
 
+/**
+ * @param {number} n
+ * @returns {bigint}
+ * @throws {TypeError}
+ * @throws {RangeError}
+ */
 export function factorialRecursive(n) {
   if (!Number.isInteger(n)) {
     throw new TypeError(

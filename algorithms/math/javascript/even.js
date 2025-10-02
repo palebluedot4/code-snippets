@@ -1,3 +1,8 @@
+/**
+ * @param {number|bigint} x
+ * @returns {boolean}
+ * @throws {TypeError}
+ */
 export function isEven(x) {
   const type = typeof x;
   if (type === "number") {
@@ -14,6 +19,11 @@ export function isEven(x) {
   );
 }
 
+/**
+ * @param {number|bigint} x
+ * @returns {boolean}
+ * @throws {TypeError}
+ */
 export function isEvenBitwise(x) {
   const type = typeof x;
   if (type === "number") {

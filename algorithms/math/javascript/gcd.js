@@ -1,3 +1,9 @@
+/**
+ * @param {number} a
+ * @param {number} b
+ * @returns {number}
+ * @throws {TypeError}
+ */
 export function gcd(a, b) {
   if (!Number.isInteger(a) || !Number.isInteger(b)) {
     throw new TypeError(

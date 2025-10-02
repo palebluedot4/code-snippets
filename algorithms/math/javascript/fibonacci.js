@@ -1,3 +1,9 @@
+/**
+ * @param {number} n
+ * @returns {bigint}
+ * @throws {TypeError}
+ * @throws {RangeError}
+ */
 export function fibonacci(n) {
   if (!Number.isInteger(n)) {
     throw new TypeError(
@@ -20,6 +26,12 @@ export function fibonacci(n) {
   return b;
 }
 
+/**
+ * @param {number} n
+ * @returns {bigint}
+ * @throws {TypeError}
+ * @throws {RangeError}
+ */
 export function fibonacciRecursive(n) {
   if (!Number.isInteger(n)) {
     throw new TypeError(

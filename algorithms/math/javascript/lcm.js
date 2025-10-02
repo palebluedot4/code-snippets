@@ -1,3 +1,9 @@
+/**
+ * @param {number} a
+ * @param {number} b
+ * @returns {bigint}
+ * @throws {TypeError}
+ */
 export function lcm(a, b) {
   if (!Number.isInteger(a) || !Number.isInteger(b)) {
     throw new TypeError(

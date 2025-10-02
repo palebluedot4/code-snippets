@@ -1,3 +1,8 @@
+/**
+ * @param {number|bigint} x
+ * @returns {number|bigint}
+ * @throws {TypeError}
+ */
 export function absValue(x) {
   const type = typeof x;
   if (type === "number") {
