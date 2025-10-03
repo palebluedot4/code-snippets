@@ -2,5 +2,6 @@ go 1.25
 
 use (
 	./algorithms/math/go
+	./cookbook/datetime/go
 	./cookbook/sequence-manipulation/go
 )
