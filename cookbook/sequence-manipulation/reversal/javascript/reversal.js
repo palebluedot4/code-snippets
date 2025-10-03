@@ -1,10 +1,10 @@
-export function reverseString(s) {
-  if (typeof s !== "string") {
+export function reverseString(str) {
+  if (typeof str !== "string") {
     throw new TypeError(
-      `reverseString() argument must be string, got: ${typeof s}`
+      `reverseString() argument must be string, got: ${typeof str}`
     );
   }
-  return Array.from(s).reverse().join("");
+  return Array.from(str).reverse().join("");
 }
 
 export function reverseArray(arr) {
