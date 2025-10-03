@@ -1,11 +1,11 @@
-package reversal_test
+package sequencemanipulation_test
 
 import (
 	"reflect"
 	"slices"
 	"testing"
 
-	. "github.com/palebluedot4/code-snippets/cookbook/sequence-manipulation/reversal"
+	. "github.com/palebluedot4/code-snippets/cookbook/sequencemanipulation"
 )
 
 func TestReverseString(t *testing.T) {

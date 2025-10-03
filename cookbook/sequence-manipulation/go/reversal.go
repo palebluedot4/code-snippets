@@ -1,4 +1,4 @@
-package reversal
+package sequencemanipulation
 
 import "slices"
 
