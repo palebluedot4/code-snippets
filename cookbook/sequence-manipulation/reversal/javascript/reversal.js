@@ -1,3 +1,8 @@
+/**
+ * @param {string} str
+ * @returns {string}
+ * @throws {TypeError}
+ */
 export function reverseString(str) {
   if (typeof str !== "string") {
     throw new TypeError(
@@ -7,6 +12,12 @@ export function reverseString(str) {
   return Array.from(str).reverse().join("");
 }
 
+/**
+ * @template T
+ * @param {T[]} arr
+ * @returns {T[]}
+ * @throws {TypeError}
+ */
 export function reverseArray(arr) {
   if (!Array.isArray(arr)) {
     throw new TypeError(
@@ -16,6 +27,11 @@ export function reverseArray(arr) {
   return arr.toReversed();
 }
 
+/**
+ * @param {*[]} arr
+ * @returns {void}
+ * @throws {TypeError}
+ */
 export function reverseArrayInPlace(arr) {
   if (!Array.isArray(arr)) {
     throw new TypeError(
@@ -25,6 +41,11 @@ export function reverseArrayInPlace(arr) {
   arr.reverse();
 }
 
+/**
+ * @param {*[]} arr
+ * @returns {void}
+ * @throws {TypeError}
+ */
 export function reverseArrayInPlaceManual(arr) {
   if (!Array.isArray(arr)) {
     throw new TypeError(
