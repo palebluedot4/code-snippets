@@ -1,5 +1,5 @@
-export function reverseString(s: string): string {
-  return Array.from(s).reverse().join("");
+export function reverseString(str: string): string {
+  return Array.from(str).reverse().join("");
 }
 
 export function reverseArray<T>(arr: readonly T[]): T[] {

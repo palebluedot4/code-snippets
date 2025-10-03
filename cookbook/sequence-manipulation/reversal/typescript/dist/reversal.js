@@ -4,8 +4,8 @@ exports.reverseString = reverseString;
 exports.reverseArray = reverseArray;
 exports.reverseArrayInPlace = reverseArrayInPlace;
 exports.reverseArrayInPlaceManual = reverseArrayInPlaceManual;
-function reverseString(s) {
-    return Array.from(s).reverse().join("");
+function reverseString(str) {
+    return Array.from(str).reverse().join("");
 }
 function reverseArray(arr) {
     return arr.toReversed();
