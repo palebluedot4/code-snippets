@@ -9,3 +9,7 @@ func ToISO8601(t time.Time) string {
 func ToISO8601Nano(t time.Time) string {
 	return t.Format(time.RFC3339Nano)
 }
+
+func ToDateTime(t time.Time) string {
+	return t.Format(time.DateTime)
+}
