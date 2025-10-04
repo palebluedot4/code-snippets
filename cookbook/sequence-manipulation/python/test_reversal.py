@@ -8,7 +8,7 @@ S = TypeVar("S", str, list, tuple, bytes)
 
 
 @pytest.mark.parametrize(
-    "input_seq, expected",
+    "sequence_input, expected_output",
     [
         # str
         pytest.param("", "", id="empty_str"),
@@ -40,25 +40,31 @@ S = TypeVar("S", str, list, tuple, bytes)
         pytest.param(b"\x01\x02\x03", b"\x03\x02\x01", id="hex_bytes"),
     ],
 )
-def test_reversed_sliceable(input_seq: S, expected: S) -> None:
-    original_copy = input_seq[:] if isinstance(input_seq, (list, tuple)) else input_seq
+def test_reversed_sliceable_returns_new_reversed_sequence(
+    sequence_input: S, expected_output: S
+) -> None:
+    original_copy = (
+        sequence_input[:]
+        if isinstance(sequence_input, (list, tuple))
+        else sequence_input
+    )
 
-    actual = reversal.reversed_sliceable(input_seq)
+    actual_output = reversal.reversed_sliceable(sequence_input)
 
-    assert expected == actual
-    assert type(input_seq) is type(actual)
-    assert original_copy == input_seq
+    assert actual_output == expected_output
+    assert type(sequence_input) is type(actual_output)
+    assert sequence_input == original_copy
 
 
 @pytest.mark.parametrize(
-    "reversal_func",
+    "reversal_function",
     [
         pytest.param(reversal.reverse_list_in_place, id="standard_in_place"),
         pytest.param(reversal._reverse_list_in_place_manual, id="manual_in_place"),
     ],
 )
 @pytest.mark.parametrize(
-    ("initial_list", "expected"),
+    ("list_input", "expected_output"),
     [
         pytest.param([], [], id="empty_list"),
         pytest.param([1], [1], id="single_element_list"),
@@ -70,13 +76,13 @@ def test_reversed_sliceable(input_seq: S, expected: S) -> None:
         pytest.param([1, 2, 2, 1], [1, 2, 2, 1], id="palindrome_list"),
     ],
 )
-def test_in_place_reversal_functions(
-    reversal_func: Callable[[list[Any]], None],
-    initial_list: list[Any],
-    expected: list[Any],
+def test_in_place_reversal_functions_modify_list(
+    reversal_function: Callable[[list[Any]], None],
+    list_input: list[Any],
+    expected_output: list[Any],
 ) -> None:
-    actual_list = list(initial_list)
+    actual_output = list(list_input)
 
-    reversal_func(actual_list)
+    reversal_function(actual_output)
 
-    assert expected == actual_list
+    assert actual_output == expected_output
