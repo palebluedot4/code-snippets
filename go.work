@@ -4,4 +4,5 @@ use (
 	./algorithms/math/go
 	./cookbook/datetime/go
 	./cookbook/sequence-manipulation/go
+	./crypto/hashing/go
 )
