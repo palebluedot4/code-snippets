@@ -38,7 +38,7 @@ func fibonacciRecursive(n *big.Int) *big.Int {
 }
 
 const (
-	// The 93rd is the largest fibonacci number that fits in uint64
+	// The 93rd is the largest fibonacci number that fits in uint64.
 	MaxUint64Fibonacci = 93
 )
 

@@ -39,7 +39,7 @@ func factorialRecursive(n *big.Int) *big.Int {
 }
 
 const (
-	// 20! is the largest factorial that fits in uint64
+	// 20! is the largest factorial that fits in uint64.
 	MaxUint64Factorial = 20
 )
 
