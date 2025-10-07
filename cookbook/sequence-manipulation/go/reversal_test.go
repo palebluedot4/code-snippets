@@ -9,6 +9,7 @@ import (
 )
 
 func TestReverseString(t *testing.T) {
+	t.Parallel()
 	tests := []struct {
 		name  string
 		input string
@@ -58,6 +59,7 @@ func TestReverseString(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
 			got := sequencemanipulation.ReverseString(tt.input)
 			if got != tt.want {
 				t.Errorf("ReverseString(%q) got %q, want %q", tt.input, got, tt.want)
@@ -67,7 +69,9 @@ func TestReverseString(t *testing.T) {
 }
 
 func TestReverseSlice(t *testing.T) {
+	t.Parallel()
 	t.Run("int slice", func(t *testing.T) {
+		t.Parallel()
 		tests := []struct {
 			name  string
 			input []int
@@ -102,6 +106,7 @@ func TestReverseSlice(t *testing.T) {
 
 		for _, tt := range tests {
 			t.Run(tt.name, func(t *testing.T) {
+				t.Parallel()
 				var clone []int
 				if tt.input != nil {
 					clone = make([]int, len(tt.input))
@@ -119,6 +124,7 @@ func TestReverseSlice(t *testing.T) {
 	})
 
 	t.Run("string slice", func(t *testing.T) {
+		t.Parallel()
 		tests := []struct {
 			name  string
 			input []string
@@ -148,6 +154,7 @@ func TestReverseSlice(t *testing.T) {
 
 		for _, tt := range tests {
 			t.Run(tt.name, func(t *testing.T) {
+				t.Parallel()
 				var clone []string
 				if tt.input != nil {
 					clone = make([]string, len(tt.input))
@@ -166,7 +173,9 @@ func TestReverseSlice(t *testing.T) {
 }
 
 func TestReverseSliceInPlace(t *testing.T) {
+	t.Parallel()
 	t.Run("int slice", func(t *testing.T) {
+		t.Parallel()
 		tests := []struct {
 			name  string
 			input []int
@@ -201,6 +210,7 @@ func TestReverseSliceInPlace(t *testing.T) {
 
 		for _, tt := range tests {
 			t.Run(tt.name, func(t *testing.T) {
+				t.Parallel()
 				got := slices.Clone(tt.input)
 				sequencemanipulation.ReverseSliceInPlace(got)
 				if !reflect.DeepEqual(tt.want, got) {
@@ -211,6 +221,7 @@ func TestReverseSliceInPlace(t *testing.T) {
 	})
 
 	t.Run("string slice", func(t *testing.T) {
+		t.Parallel()
 		tests := []struct {
 			name  string
 			input []string
@@ -240,6 +251,7 @@ func TestReverseSliceInPlace(t *testing.T) {
 
 		for _, tt := range tests {
 			t.Run(tt.name, func(t *testing.T) {
+				t.Parallel()
 				got := slices.Clone(tt.input)
 				sequencemanipulation.ReverseSliceInPlace(got)
 				if !reflect.DeepEqual(tt.want, got) {
