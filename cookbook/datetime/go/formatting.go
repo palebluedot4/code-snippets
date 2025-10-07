@@ -17,3 +17,7 @@ func ToDateTime(t time.Time) string {
 func ToDateOnly(t time.Time) string {
 	return t.Format(time.DateOnly)
 }
+
+func ToTimeOnly(t time.Time) string {
+	return t.Format(time.TimeOnly)
+}
