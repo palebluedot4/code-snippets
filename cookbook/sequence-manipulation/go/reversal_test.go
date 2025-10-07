@@ -5,7 +5,7 @@ import (
 	"slices"
 	"testing"
 
-	. "github.com/palebluedot4/code-snippets/cookbook/sequencemanipulation"
+	"github.com/palebluedot4/code-snippets/cookbook/sequencemanipulation"
 )
 
 func TestReverseString(t *testing.T) {
@@ -58,7 +58,7 @@ func TestReverseString(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := ReverseString(tt.input)
+			got := sequencemanipulation.ReverseString(tt.input)
 			if got != tt.want {
 				t.Errorf("ReverseString(%q) got %q, want %q", tt.input, got, tt.want)
 			}
@@ -107,7 +107,7 @@ func TestReverseSlice(t *testing.T) {
 					clone = make([]int, len(tt.input))
 					copy(clone, tt.input)
 				}
-				got := ReverseSlice(tt.input)
+				got := sequencemanipulation.ReverseSlice(tt.input)
 				if !reflect.DeepEqual(tt.want, got) {
 					t.Errorf("ReverseSlice() got %v, want %v", got, tt.want)
 				}
@@ -153,7 +153,7 @@ func TestReverseSlice(t *testing.T) {
 					clone = make([]string, len(tt.input))
 					copy(clone, tt.input)
 				}
-				got := ReverseSlice(tt.input)
+				got := sequencemanipulation.ReverseSlice(tt.input)
 				if !reflect.DeepEqual(tt.want, got) {
 					t.Errorf("ReverseSlice() got %v, want %v", got, tt.want)
 				}
@@ -202,7 +202,7 @@ func TestReverseSliceInPlace(t *testing.T) {
 		for _, tt := range tests {
 			t.Run(tt.name, func(t *testing.T) {
 				got := slices.Clone(tt.input)
-				ReverseSliceInPlace(got)
+				sequencemanipulation.ReverseSliceInPlace(got)
 				if !reflect.DeepEqual(tt.want, got) {
 					t.Errorf("ReverseSliceInPlace() modified the input, got %v, want %v", got, tt.want)
 				}
@@ -241,7 +241,7 @@ func TestReverseSliceInPlace(t *testing.T) {
 		for _, tt := range tests {
 			t.Run(tt.name, func(t *testing.T) {
 				got := slices.Clone(tt.input)
-				ReverseSliceInPlace(got)
+				sequencemanipulation.ReverseSliceInPlace(got)
 				if !reflect.DeepEqual(tt.want, got) {
 					t.Errorf("ReverseSliceInPlace() modified the input, got %v, want %v", got, tt.want)
 				}
