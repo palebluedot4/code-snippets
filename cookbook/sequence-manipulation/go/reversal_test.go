@@ -261,3 +261,107 @@ func TestReverseSliceInPlace(t *testing.T) {
 		}
 	})
 }
+
+func TestReverseSliceWithIter(t *testing.T) {
+	t.Parallel()
+	t.Run("int slice", func(t *testing.T) {
+		t.Parallel()
+		tests := []struct {
+			name  string
+			input []int
+			want  []int
+		}{
+			{
+				name:  "nil slice",
+				input: nil,
+				want:  nil,
+			},
+			{
+				name:  "empty slice",
+				input: []int{},
+				want:  []int{},
+			},
+			{
+				name:  "single element",
+				input: []int{1},
+				want:  []int{1},
+			},
+			{
+				name:  "even number of elements",
+				input: []int{1, 2, 3, 4},
+				want:  []int{4, 3, 2, 1},
+			},
+			{
+				name:  "odd number of elements",
+				input: []int{1, 2, 3, 4, 5},
+				want:  []int{5, 4, 3, 2, 1},
+			},
+		}
+
+		for _, tt := range tests {
+			t.Run(tt.name, func(t *testing.T) {
+				t.Parallel()
+				var clone []int
+				if tt.input != nil {
+					clone = make([]int, len(tt.input))
+					copy(clone, tt.input)
+				}
+				got := sequencemanipulation.ReverseSliceWithIter(tt.input)
+				if !reflect.DeepEqual(tt.want, got) {
+					t.Errorf("ReverseSliceWithIter() got %v, want %v", got, tt.want)
+				}
+				if !reflect.DeepEqual(clone, tt.input) {
+					t.Errorf("ReverseSliceWithIter() modified the input, got %v, want %v", tt.input, clone)
+				}
+			})
+		}
+	})
+
+	t.Run("string slice", func(t *testing.T) {
+		t.Parallel()
+		tests := []struct {
+			name  string
+			input []string
+			want  []string
+		}{
+			{
+				name:  "nil slice",
+				input: nil,
+				want:  nil,
+			},
+			{
+				name:  "empty slice",
+				input: []string{},
+				want:  []string{},
+			},
+			{
+				name:  "even number of elements",
+				input: []string{"hello", "world"},
+				want:  []string{"world", "hello"},
+			},
+			{
+				name:  "odd number of elements",
+				input: []string{"hello", "world", "!"},
+				want:  []string{"!", "world", "hello"},
+			},
+		}
+
+		for _, tt := range tests {
+			t.Run(tt.name, func(t *testing.T) {
+				t.Parallel()
+				var clone []string
+				if tt.input != nil {
+					clone = make([]string, len(tt.input))
+					copy(clone, tt.input)
+				}
+				got := sequencemanipulation.ReverseSliceWithIter(tt.input)
+				if !reflect.DeepEqual(tt.want, got) {
+					t.Errorf("ReverseSliceWithIter() got %v, want %v", got, tt.want)
+				}
+				if !reflect.DeepEqual(clone, tt.input) {
+					t.Errorf("ReverseSliceWithIter() modified the input, got %v, want %v", tt.input, clone)
+				}
+			})
+		}
+	})
+}
