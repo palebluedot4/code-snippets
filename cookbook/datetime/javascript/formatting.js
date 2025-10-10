@@ -36,7 +36,7 @@ export function toDateTimeString(date, timeZone = "UTC") {
     timeZone: timeZone,
   };
   try {
-    // The "sv-SE" locale conveniently provides the desired "YYYY-MM-DD HH:MM:SS" format
+    // The "sv-SE" locale conveniently provides the desired "YYYY-MM-DD HH:MM:SS" format.
     const formatter = new Intl.DateTimeFormat("sv-SE", options);
     return formatter.format(date);
   } catch (e) {
