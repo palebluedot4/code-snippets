@@ -1,6 +1,9 @@
 package datetime
 
-import "time"
+import (
+	"net/http"
+	"time"
+)
 
 func ToISO8601(t time.Time) string {
 	return t.Format(time.RFC3339)
@@ -20,4 +23,8 @@ func ToDateOnly(t time.Time) string {
 
 func ToTimeOnly(t time.Time) string {
 	return t.Format(time.TimeOnly)
+}
+
+func ToHTTPHeader(t time.Time) string {
+	return t.UTC().Format(http.TimeFormat)
 }
