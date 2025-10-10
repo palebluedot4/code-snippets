@@ -28,3 +28,7 @@ func ToTimeOnly(t time.Time) string {
 func ToHTTPHeader(t time.Time) string {
 	return t.UTC().Format(http.TimeFormat)
 }
+
+func ToCustomLayout(t time.Time, layout string) string {
+	return t.Format(layout)
+}
