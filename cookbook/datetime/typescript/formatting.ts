@@ -15,6 +15,7 @@ export function toDateTimeString(date: Date, timeZone: string = "UTC"): string {
   };
   let formatter: Intl.DateTimeFormat;
   try {
+    // The "sv-SE" locale conveniently provides the desired "YYYY-MM-DD HH:MM:SS" format.
     formatter = new Intl.DateTimeFormat("sv-SE", options);
   } catch (e) {
     if (e instanceof RangeError) {
