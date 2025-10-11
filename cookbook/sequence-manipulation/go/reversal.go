@@ -51,3 +51,16 @@ func reverseSliceInPlaceManual[S ~[]E, E any](s S) {
 		s[i], s[j] = s[j], s[i]
 	}
 }
+
+func reverseSliceManualWithIter[S ~[]E, E any](s S) S {
+	if s == nil {
+		return nil
+	}
+	reversed := make(S, len(s))
+	i := 0
+	for _, v := range slices.Backward(s) {
+		reversed[i] = v
+		i++
+	}
+	return reversed
+}
