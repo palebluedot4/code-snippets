@@ -11,3 +11,7 @@ def to_iso8601(dt: datetime.datetime) -> str:
 
 def to_datetime_string(dt: datetime.datetime) -> str:
     return dt.strftime("%Y-%m-%d %H:%M:%S")
+
+
+def to_date_string(dt: datetime.datetime) -> str:
+    return dt.strftime("%Y-%m-%d")
