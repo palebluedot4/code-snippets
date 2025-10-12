@@ -15,3 +15,7 @@ def to_datetime_string(dt: datetime.datetime) -> str:
 
 def to_date_string(dt: datetime.datetime) -> str:
     return dt.strftime("%Y-%m-%d")
+
+
+def to_time_string(dt: datetime.datetime) -> str:
+    return dt.strftime("%H:%M:%S")
