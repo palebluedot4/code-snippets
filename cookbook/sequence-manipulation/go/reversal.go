@@ -1,6 +1,9 @@
 package sequencemanipulation
 
-import "slices"
+import (
+	"iter"
+	"slices"
+)
 
 func ReverseString(s string) string {
 	runes := []rune(s)
@@ -46,5 +49,27 @@ func reverseSliceManual[S ~[]E, E any](s S) S {
 func reverseSliceInPlaceManual[S ~[]E, E any](s S) {
 	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
 		s[i], s[j] = s[j], s[i]
+	}
+}
+
+func reverseSliceManualWithIter[S ~[]E, E any](s S) S {
+	if len(s) == 0 {
+		return s
+	}
+	reverseIter := newReverseIter(s)
+	reversed := make(S, 0, len(s))
+	for v := range reverseIter {
+		reversed = append(reversed, v)
+	}
+	return reversed
+}
+
+func newReverseIter[S ~[]E, E any](s S) iter.Seq[E] {
+	return func(yield func(E) bool) {
+		for i := len(s) - 1; i >= 0; i-- {
+			if !yield(s[i]) {
+				return
+			}
+		}
 	}
 }
