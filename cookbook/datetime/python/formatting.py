@@ -28,3 +28,7 @@ def to_http_header(dt: datetime.datetime) -> str:
             "to_http_header() argument must be timezone-aware datetime object, got naive datetime"
         )
     return formatdate(dt.timestamp(), usegmt=True)
+
+
+def to_custom_format(dt: datetime.datetime, fmt: str) -> str:
+    return dt.strftime(fmt)
