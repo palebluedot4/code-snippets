@@ -53,8 +53,11 @@ func reverseSliceInPlaceManual[S ~[]E, E any](s S) {
 }
 
 func reverseSliceManualWithIter[S ~[]E, E any](s S) S {
-	if len(s) == 0 {
-		return s
+	if s == nil {
+		return nil
+	}
+	if len(s) < 2 {
+		return append(S{}, s...)
 	}
 	reverseIter := newReverseIter(s)
 	reversed := make(S, 0, len(s))
