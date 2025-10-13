@@ -113,10 +113,10 @@ func TestReverseSlice(t *testing.T) {
 					copy(clone, tt.input)
 				}
 				got := sequencemanipulation.ReverseSlice(tt.input)
-				if !reflect.DeepEqual(tt.want, got) {
+				if !reflect.DeepEqual(got, tt.want) {
 					t.Errorf("ReverseSlice() got %v, want %v", got, tt.want)
 				}
-				if !reflect.DeepEqual(clone, tt.input) {
+				if !reflect.DeepEqual(tt.input, clone) {
 					t.Errorf("ReverseSlice() modified the input, got %v, want %v", tt.input, clone)
 				}
 			})
@@ -161,10 +161,10 @@ func TestReverseSlice(t *testing.T) {
 					copy(clone, tt.input)
 				}
 				got := sequencemanipulation.ReverseSlice(tt.input)
-				if !reflect.DeepEqual(tt.want, got) {
+				if !reflect.DeepEqual(got, tt.want) {
 					t.Errorf("ReverseSlice() got %v, want %v", got, tt.want)
 				}
-				if !reflect.DeepEqual(clone, tt.input) {
+				if !reflect.DeepEqual(tt.input, clone) {
 					t.Errorf("ReverseSlice() modified the input, got %v, want %v", tt.input, clone)
 				}
 			})
@@ -213,7 +213,7 @@ func TestReverseSliceInPlace(t *testing.T) {
 				t.Parallel()
 				got := slices.Clone(tt.input)
 				sequencemanipulation.ReverseSliceInPlace(got)
-				if !reflect.DeepEqual(tt.want, got) {
+				if !reflect.DeepEqual(got, tt.want) {
 					t.Errorf("ReverseSliceInPlace() modified the input, got %v, want %v", got, tt.want)
 				}
 			})
@@ -254,7 +254,7 @@ func TestReverseSliceInPlace(t *testing.T) {
 				t.Parallel()
 				got := slices.Clone(tt.input)
 				sequencemanipulation.ReverseSliceInPlace(got)
-				if !reflect.DeepEqual(tt.want, got) {
+				if !reflect.DeepEqual(got, tt.want) {
 					t.Errorf("ReverseSliceInPlace() modified the input, got %v, want %v", got, tt.want)
 				}
 			})
@@ -307,10 +307,10 @@ func TestReverseSliceWithIter(t *testing.T) {
 					copy(clone, tt.input)
 				}
 				got := sequencemanipulation.ReverseSliceWithIter(tt.input)
-				if !reflect.DeepEqual(tt.want, got) {
+				if !reflect.DeepEqual(got, tt.want) {
 					t.Errorf("ReverseSliceWithIter() got %v, want %v", got, tt.want)
 				}
-				if !reflect.DeepEqual(clone, tt.input) {
+				if !reflect.DeepEqual(tt.input, clone) {
 					t.Errorf("ReverseSliceWithIter() modified the input, got %v, want %v", tt.input, clone)
 				}
 			})
@@ -355,10 +355,10 @@ func TestReverseSliceWithIter(t *testing.T) {
 					copy(clone, tt.input)
 				}
 				got := sequencemanipulation.ReverseSliceWithIter(tt.input)
-				if !reflect.DeepEqual(tt.want, got) {
+				if !reflect.DeepEqual(got, tt.want) {
 					t.Errorf("ReverseSliceWithIter() got %v, want %v", got, tt.want)
 				}
-				if !reflect.DeepEqual(clone, tt.input) {
+				if !reflect.DeepEqual(tt.input, clone) {
 					t.Errorf("ReverseSliceWithIter() modified the input, got %v, want %v", tt.input, clone)
 				}
 			})
