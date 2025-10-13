@@ -119,6 +119,11 @@ func TestReverseSlice(t *testing.T) {
 				if !reflect.DeepEqual(tt.input, clone) {
 					t.Errorf("ReverseSlice() modified the input, got %v, want %v", tt.input, clone)
 				}
+				if tt.input != nil && cap(tt.input) > 0 {
+					if reflect.ValueOf(got).Pointer() == reflect.ValueOf(tt.input).Pointer() {
+						t.Errorf("ReverseSlice() should have returned a new slice, but it shares the same memory address as the input")
+					}
+				}
 			})
 		}
 	})
@@ -171,6 +176,11 @@ func TestReverseSlice(t *testing.T) {
 				}
 				if !reflect.DeepEqual(tt.input, clone) {
 					t.Errorf("ReverseSlice() modified the input, got %v, want %v", tt.input, clone)
+				}
+				if tt.input != nil && cap(tt.input) > 0 {
+					if reflect.ValueOf(got).Pointer() == reflect.ValueOf(tt.input).Pointer() {
+						t.Errorf("ReverseSlice() should have returned a new slice, but it shares the same memory address as the input")
+					}
 				}
 			})
 		}
@@ -323,6 +333,11 @@ func TestReverseSliceWithIter(t *testing.T) {
 				if !reflect.DeepEqual(tt.input, clone) {
 					t.Errorf("ReverseSliceWithIter() modified the input, got %v, want %v", tt.input, clone)
 				}
+				if tt.input != nil && cap(tt.input) > 0 {
+					if reflect.ValueOf(got).Pointer() == reflect.ValueOf(tt.input).Pointer() {
+						t.Errorf("ReverseSliceWithIter() should have returned a new slice, but it shares the same memory address as the input")
+					}
+				}
 			})
 		}
 	})
@@ -375,6 +390,11 @@ func TestReverseSliceWithIter(t *testing.T) {
 				}
 				if !reflect.DeepEqual(tt.input, clone) {
 					t.Errorf("ReverseSliceWithIter() modified the input, got %v, want %v", tt.input, clone)
+				}
+				if tt.input != nil && cap(tt.input) > 0 {
+					if reflect.ValueOf(got).Pointer() == reflect.ValueOf(tt.input).Pointer() {
+						t.Errorf("ReverseSliceWithIter() should have returned a new slice, but it shares the same memory address as the input")
+					}
 				}
 			})
 		}
