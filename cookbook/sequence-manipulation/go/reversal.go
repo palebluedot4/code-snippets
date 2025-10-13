@@ -22,8 +22,8 @@ func ReverseSliceInPlace[S ~[]E, E any](s S) {
 }
 
 func ReverseSliceWithIter[S ~[]E, E any](s S) S {
-	if len(s) == 0 {
-		return s
+	if len(s) < 2 {
+		return slices.Clone(s)
 	}
 	reverseIter := func(yield func(E) bool) {
 		for _, v := range slices.Backward(s) {
