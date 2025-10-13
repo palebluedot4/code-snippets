@@ -1,8 +1,10 @@
 package sequencemanipulation
 
+import "slices"
+
 func Unique[S ~[]E, E comparable](s S) S {
 	if len(s) < 2 {
-		return s
+		return slices.Clone(s)
 	}
 	seen := make(map[E]struct{}, len(s))
 	res := make(S, 0, len(s))
