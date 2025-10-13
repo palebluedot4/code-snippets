@@ -88,7 +88,7 @@ func TestReverseSlice(t *testing.T) {
 				want:  []int{},
 			},
 			{
-				name:  "single element",
+				name:  "single element slice",
 				input: []int{1},
 				want:  []int{1},
 			},
@@ -139,6 +139,11 @@ func TestReverseSlice(t *testing.T) {
 				name:  "empty slice",
 				input: []string{},
 				want:  []string{},
+			},
+			{
+				name:  "single element slice",
+				input: []string{"gopher"},
+				want:  []string{"gopher"},
 			},
 			{
 				name:  "even number of elements",
@@ -192,7 +197,7 @@ func TestReverseSliceInPlace(t *testing.T) {
 				want:  []int{},
 			},
 			{
-				name:  "single element",
+				name:  "single element slice",
 				input: []int{1},
 				want:  []int{1},
 			},
@@ -236,6 +241,11 @@ func TestReverseSliceInPlace(t *testing.T) {
 				name:  "empty slice",
 				input: []string{},
 				want:  []string{},
+			},
+			{
+				name:  "single element slice",
+				input: []string{"gopher"},
+				want:  []string{"gopher"},
 			},
 			{
 				name:  "even number of elements",
@@ -282,7 +292,7 @@ func TestReverseSliceWithIter(t *testing.T) {
 				want:  []int{},
 			},
 			{
-				name:  "single element",
+				name:  "single element slice",
 				input: []int{1},
 				want:  []int{1},
 			},
@@ -333,6 +343,11 @@ func TestReverseSliceWithIter(t *testing.T) {
 				name:  "empty slice",
 				input: []string{},
 				want:  []string{},
+			},
+			{
+				name:  "single element slice",
+				input: []string{"gopher"},
+				want:  []string{"gopher"},
 			},
 			{
 				name:  "even number of elements",
