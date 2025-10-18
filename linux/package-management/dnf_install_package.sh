@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# sudo dnf install <package>
-sudo dnf install htop
+# sudo dnf install -y <package>
+sudo dnf install -y htop
