@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# sudo apt install <package>
-sudo apt install htop
+# sudo apt-get update && sudo apt-get install -y <package>
+sudo apt-get update && sudo apt-get install -y htop
