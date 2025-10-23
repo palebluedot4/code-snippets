@@ -3,6 +3,7 @@ go 1.25
 use (
 	./algorithms/math/go
 	./containerization/docker/basic
+	./containerization/docker/development
 	./cookbook/datetime/go
 	./cookbook/sequence-manipulation/go
 	./crypto/hashing/go
