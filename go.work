@@ -5,6 +5,7 @@ use (
 	./containerization/docker/basic
 	./containerization/docker/development
 	./containerization/docker/multi-stage
+	./containerization/docker/production
 	./cookbook/datetime/go
 	./cookbook/sequence-manipulation/go
 	./crypto/hashing/go
