@@ -4,6 +4,7 @@ use (
 	./algorithms/math/go
 	./containerization/docker/basic
 	./containerization/docker/development
+	./containerization/docker/multi-stage
 	./cookbook/datetime/go
 	./cookbook/sequence-manipulation/go
 	./crypto/hashing/go
