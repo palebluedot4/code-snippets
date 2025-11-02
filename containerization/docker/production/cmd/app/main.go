@@ -35,7 +35,7 @@ func main() {
 		})
 	})
 
-	srv := &http.Server{
+	server := &http.Server{
 		Addr:              ":8080",
 		Handler:           router,
 		ReadTimeout:       10 * time.Second,
@@ -46,16 +46,16 @@ func main() {
 		ErrorLog:          slog.NewLogLogger(logger.Handler(), slog.LevelError),
 	}
 
-	errCh := make(chan error, 1)
+	serverErrors := make(chan error, 1)
 	go func() {
-		logger.Info("starting server", "address", srv.Addr)
-		if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
-			errCh <- err
+		logger.Info("starting server", "address", server.Addr)
+		if err := server.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+			serverErrors <- err
 		}
 	}()
 
 	select {
-	case err := <-errCh:
+	case err := <-serverErrors:
 		logger.Error("server startup failed", "error", err)
 		os.Exit(1)
 	case <-ctx.Done():
@@ -65,7 +65,7 @@ func main() {
 
 	shutdownCtx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
-	if err := srv.Shutdown(shutdownCtx); err != nil {
+	if err := server.Shutdown(shutdownCtx); err != nil {
 		logger.Error("server forced to shutdown", "error", err)
 		os.Exit(1)
 	}
