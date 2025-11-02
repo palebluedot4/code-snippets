@@ -25,7 +25,7 @@ func main() {
 		})
 	})
 
-	srv := &http.Server{
+	server := &http.Server{
 		Addr:              ":8080",
 		Handler:           router,
 		ReadTimeout:       10 * time.Second,
@@ -39,8 +39,8 @@ func main() {
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 
 	go func() {
-		log.Printf("starting server on %s", srv.Addr)
-		if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+		log.Printf("starting server on %s", server.Addr)
+		if err := server.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
 			log.Fatalf("server startup failed: %v", err)
 		}
 	}()
@@ -50,7 +50,7 @@ func main() {
 	log.Println("shutting down server")
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
-	if err := srv.Shutdown(ctx); err != nil {
+	if err := server.Shutdown(ctx); err != nil {
 		log.Fatalf("server forced to shutdown: %v", err)
 	}
 	log.Println("server shutdown complete")
