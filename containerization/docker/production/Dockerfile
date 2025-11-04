@@ -26,8 +26,8 @@ RUN --mount=type=cache,target=/root/.cache/go-build \
     -trimpath \
     -buildvcs=false \
     -ldflags="-s -w" \
-    -o /app/main \
-    ./cmd/app
+    -o /app/healthcheck \
+    ./cmd/healthcheck
 
 RUN --mount=type=cache,target=/root/.cache/go-build \
     --mount=type=cache,target=/go/pkg/mod \
@@ -38,8 +38,8 @@ RUN --mount=type=cache,target=/root/.cache/go-build \
     -trimpath \
     -buildvcs=false \
     -ldflags="-s -w" \
-    -o /app/healthcheck \
-    ./cmd/healthcheck
+    -o /app/main \
+    ./cmd/app
 
 FROM gcr.io/distroless/static-debian12
 
