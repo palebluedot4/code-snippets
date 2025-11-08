@@ -43,16 +43,16 @@ RUN --mount=type=cache,target=/root/.cache/go-build \
 
 FROM gcr.io/distroless/static-debian12
 
-WORKDIR /
+WORKDIR /app
 
-COPY --from=builder /app/main /main
-COPY --from=builder /app/healthcheck /healthcheck
+COPY --from=builder /app/main /app/main
+COPY --from=builder /app/healthcheck /app/healthcheck
 
 USER nonroot:nonroot
 
 EXPOSE 8080
 
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD ["/healthcheck"]
+    CMD ["./healthcheck"]
 
-ENTRYPOINT ["/main"]
+ENTRYPOINT ["./main"]
