@@ -15,19 +15,15 @@ func AbsSigned[T constraints.Signed](x T) T {
 	return x
 }
 
-func AbsIEEE[T constraints.Signed | constraints.Float](x T) T {
-	switch any(x).(type) {
-	case float32, float64:
-		if math.Signbit(float64(x)) {
-			return -x
-		}
-		return x
-	default:
-		if x < 0 {
-			return -x
-		}
-		return x
+func AbsFloat[T constraints.Float](x T) T {
+	return T(math.Abs(float64(x)))
+}
+
+func absFloatSignbit[T constraints.Float](x T) T {
+	if math.Signbit(float64(x)) {
+		return -x
 	}
+	return x
 }
 
 func AbsBitwiseSigned[T constraints.Signed](x T) T {
