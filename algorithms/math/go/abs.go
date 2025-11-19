@@ -46,22 +46,19 @@ func AbsBitwiseFloat[T constraints.Float](x T) T {
 	}
 }
 
-func AbsIEEEBits[T constraints.Signed | constraints.Float](x T) T {
-	switch any(x).(type) {
-	case float32:
+func absFloatBitwiseBranch[T constraints.Float](x T) T {
+	switch unsafe.Sizeof(x) {
+	case 4:
 		if *(*uint32)(unsafe.Pointer(&x))&(1<<31) != 0 {
 			return -x
 		}
 		return x
-	case float64:
+	case 8:
 		if *(*uint64)(unsafe.Pointer(&x))&(1<<63) != 0 {
 			return -x
 		}
 		return x
 	default:
-		if x < 0 {
-			return -x
-		}
-		return x
+		panic(fmt.Sprintf("abs: unsupported float size %d", unsafe.Sizeof(x)))
 	}
 }
