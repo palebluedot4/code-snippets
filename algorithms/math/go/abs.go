@@ -38,15 +38,15 @@ func AbsBitwiseSigned[T constraints.Signed](x T) T {
 }
 
 func AbsBitwiseFloat[T constraints.Float](x T) T {
-	switch any(x).(type) {
-	case float32:
+	switch unsafe.Sizeof(x) {
+	case 4:
 		bits := *(*uint32)(unsafe.Pointer(&x)) &^ (1 << 31)
 		return *(*T)(unsafe.Pointer(&bits))
-	case float64:
+	case 8:
 		bits := *(*uint64)(unsafe.Pointer(&x)) &^ (1 << 63)
 		return *(*T)(unsafe.Pointer(&bits))
 	default:
-		panic(fmt.Sprintf("abs: unexpected type %T", x))
+		panic(fmt.Sprintf("abs: unsupported float size %d", unsafe.Sizeof(x)))
 	}
 }
 
