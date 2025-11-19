@@ -32,8 +32,8 @@ func AbsIEEE[T constraints.Signed | constraints.Float](x T) T {
 
 func AbsBitwiseSigned[T constraints.Signed](x T) T {
 	const bitsPerByte = 8
-	signBit := unsafe.Sizeof(x)*bitsPerByte - 1
-	mask := x >> signBit
+	shift := unsafe.Sizeof(x)*bitsPerByte - 1
+	mask := x >> shift
 	return (x + mask) ^ mask
 }
 
