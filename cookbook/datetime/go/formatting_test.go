@@ -62,3 +62,48 @@ func TestToISO8601(t *testing.T) {
 		})
 	}
 }
+
+func TestToISO8601Nano(t *testing.T) {
+	t.Parallel()
+	tests := []struct {
+		name  string
+		input time.Time
+		want  string
+	}{
+		{
+			name:  "UTC time with nanoseconds",
+			input: utcTime,
+			want:  "2025-01-02T03:04:05.123456789Z",
+		},
+		{
+			name:  "time in a fixed zone with nanoseconds",
+			input: fixedZoneTime,
+			want:  "2025-01-02T11:04:05.123456789+08:00",
+		},
+		{
+			name:  "UTC time without nanoseconds",
+			input: utcTimeNoNano,
+			want:  "2025-01-02T03:04:05Z",
+		},
+		{
+			name:  "time in a fixed zone without nanoseconds",
+			input: fixedZoneTimeNoNano,
+			want:  "2025-01-02T11:04:05+08:00",
+		},
+		{
+			name:  "zero value of time.Time",
+			input: zeroTime,
+			want:  "0001-01-01T00:00:00Z",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+			got := datetime.ToISO8601Nano(tt.input)
+			if got != tt.want {
+				t.Errorf("ToISO8601Nano() got %q, want %q", got, tt.want)
+			}
+		})
+	}
+}
