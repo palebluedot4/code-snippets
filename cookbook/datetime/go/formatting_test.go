@@ -197,3 +197,48 @@ func TestToDateOnly(t *testing.T) {
 		})
 	}
 }
+
+func TestToTimeOnly(t *testing.T) {
+	t.Parallel()
+	tests := []struct {
+		name  string
+		input time.Time
+		want  string
+	}{
+		{
+			name:  "UTC time with nanoseconds",
+			input: utcTime,
+			want:  "03:04:05",
+		},
+		{
+			name:  "time in a fixed zone with nanoseconds",
+			input: fixedZoneTime,
+			want:  "11:04:05",
+		},
+		{
+			name:  "UTC time without nanoseconds",
+			input: utcTimeNoNano,
+			want:  "03:04:05",
+		},
+		{
+			name:  "time in a fixed zone without nanoseconds",
+			input: fixedZoneTimeNoNano,
+			want:  "11:04:05",
+		},
+		{
+			name:  "zero value of time.Time",
+			input: zeroTime,
+			want:  "00:00:00",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+			got := datetime.ToTimeOnly(tt.input)
+			if got != tt.want {
+				t.Errorf("ToTimeOnly() got %q, want %q", got, tt.want)
+			}
+		})
+	}
+}
