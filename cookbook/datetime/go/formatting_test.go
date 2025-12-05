@@ -242,3 +242,48 @@ func TestToTimeOnly(t *testing.T) {
 		})
 	}
 }
+
+func TestToHTTPHeader(t *testing.T) {
+	t.Parallel()
+	tests := []struct {
+		name  string
+		input time.Time
+		want  string
+	}{
+		{
+			name:  "from UTC time with nanoseconds",
+			input: utcTime,
+			want:  "Thu, 02 Jan 2025 03:04:05 GMT",
+		},
+		{
+			name:  "from fixed zone time (should convert to GMT)",
+			input: fixedZoneTime,
+			want:  "Thu, 02 Jan 2025 03:04:05 GMT",
+		},
+		{
+			name:  "from UTC time without nanoseconds",
+			input: utcTimeNoNano,
+			want:  "Thu, 02 Jan 2025 03:04:05 GMT",
+		},
+		{
+			name:  "from time in a fixed zone without nanoseconds",
+			input: fixedZoneTimeNoNano,
+			want:  "Thu, 02 Jan 2025 03:04:05 GMT",
+		},
+		{
+			name:  "from zero value of time.Time",
+			input: zeroTime,
+			want:  "Mon, 01 Jan 0001 00:00:00 GMT",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+			got := datetime.ToHTTPHeader(tt.input)
+			if got != tt.want {
+				t.Errorf("ToHTTPHeader() got %q, want %q", got, tt.want)
+			}
+		})
+	}
+}
