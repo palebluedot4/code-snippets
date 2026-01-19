@@ -8,6 +8,11 @@ data "aws_ami" "amazon_linux" {
   }
 
   filter {
+    name   = "architecture"
+    values = ["arm64"]
+  }
+
+  filter {
     name   = "virtualization-type"
     values = ["hvm"]
   }
@@ -16,6 +21,11 @@ data "aws_ami" "amazon_linux" {
 resource "aws_instance" "this" {
   ami           = data.aws_ami.amazon_linux.id
   instance_type = var.instance_type
+
+  metadata_options {
+    http_tokens   = "required"
+    http_endpoint = "enabled"
+  }
 
   tags = {
     Name = "minimal-instance"
