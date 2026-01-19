@@ -5,7 +5,7 @@ provider "aws" {
     tags = {
       Project   = "code-snippets"
       Component = "minimal-ec2"
-      ManagedBy = "Terraform"
+      ManagedBy = "terraform"
     }
   }
 }
