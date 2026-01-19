@@ -14,9 +14,3 @@ variable "instance_type" {
     error_message = "The instance_type must be a Graviton-based (ARM64) instance to match the selected AMI (e.g., t4g.micro)"
   }
 }
-
-variable "instance_name" {
-  description = "Name tag for the instance"
-  type        = string
-  default     = "minimal-instance"
-}
