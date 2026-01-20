@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/palebluedot4/code-snippets/cookbook/datetime"
+	"github.com/palebluedot4/quark/cookbook/datetime"
 )
 
 var (

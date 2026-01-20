@@ -3,7 +3,7 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project   = "code-snippets"
+      Project   = "quark"
       Component = "minimal-ec2"
       ManagedBy = "terraform"
     }

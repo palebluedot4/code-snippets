@@ -1,4 +1,4 @@
-module github.com/palebluedot4/code-snippets/containerization/docker/production
+module github.com/palebluedot4/quark/containerization/docker/production
 
 go 1.25
 

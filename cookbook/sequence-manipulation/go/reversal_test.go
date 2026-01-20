@@ -5,7 +5,7 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/palebluedot4/code-snippets/cookbook/sequencemanipulation"
+	"github.com/palebluedot4/quark/cookbook/sequencemanipulation"
 )
 
 func TestReverseString(t *testing.T) {

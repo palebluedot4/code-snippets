@@ -1,4 +1,4 @@
-module github.com/palebluedot4/code-snippets/containerization/docker-compose/development
+module github.com/palebluedot4/quark/containerization/docker-compose/development
 
 go 1.25
 

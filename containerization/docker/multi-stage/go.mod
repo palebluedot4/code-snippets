@@ -1,4 +1,4 @@
-module github.com/palebluedot4/code-snippets/containerization/docker/multistage
+module github.com/palebluedot4/quark/containerization/docker/multistage
 
 go 1.25
 

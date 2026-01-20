@@ -1,4 +1,4 @@
-module github.com/palebluedot4/code-snippets/algorithms/math
+module github.com/palebluedot4/quark/algorithms/math
 
 go 1.25
 

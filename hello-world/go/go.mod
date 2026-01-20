@@ -1,3 +1,3 @@
-module github.com/palebluedot4/code-snippets/helloworld
+module github.com/palebluedot4/quark/helloworld
 
 go 1.25
