@@ -2,10 +2,9 @@ provider "aws" {
   region = var.aws_region
 
   default_tags {
-    tags = {
-      Project   = "quark"
-      Component = "minimal-ec2"
-      ManagedBy = "terraform"
-    }
+    tags = merge(var.common_tags, {
+      Environment = var.environment
+      Component   = "minimal-ec2"
+    })
   }
 }
