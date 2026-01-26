@@ -11,4 +11,5 @@ use (
 	./cookbook/datetime/go
 	./cookbook/sequence-manipulation/go
 	./crypto/hashing/go
+	./infrastructure/terraform
 )
