@@ -30,7 +30,7 @@ func TestMinimalEC2(t *testing.T) {
 				outputName: "instance_id",
 				assertion: func(t *testing.T, val string) {
 					pattern := regexp.MustCompile(`^i-[a-z0-9]{17}$`)
-					assert.Regexp(t, pattern, val, "instance ID got %q, want format %q", val, pattern.String())
+					assert.Regexp(t, pattern, val)
 				},
 			},
 			{
@@ -38,7 +38,7 @@ func TestMinimalEC2(t *testing.T) {
 				outputName: "instance_arn",
 				assertion: func(t *testing.T, val string) {
 					const prefix = "arn:aws:ec2:"
-					assert.Contains(t, val, prefix, "instance ARN got %q, want to contain %q", val, prefix)
+					assert.Contains(t, val, prefix)
 				},
 			},
 			{
@@ -46,9 +46,9 @@ func TestMinimalEC2(t *testing.T) {
 				outputName: "instance_public_ip",
 				assertion: func(t *testing.T, val string) {
 					ip := net.ParseIP(val)
-					if assert.NotNil(t, ip, "instance public IP got %q, want a valid IP", val) {
-						assert.True(t, ip.IsGlobalUnicast(), "IsGlobalUnicast() for %q got false, want true", val)
-						assert.NotNil(t, ip.To4(), "To4() for %q got nil, want non-nil (IPv4)", val)
+					if assert.NotNil(t, ip) {
+						assert.True(t, ip.IsGlobalUnicast())
+						assert.NotNil(t, ip.To4())
 					}
 				},
 			},
