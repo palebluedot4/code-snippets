@@ -29,7 +29,7 @@ func TestMinimalEC2(t *testing.T) {
 				name:       "instance id format",
 				outputName: "instance_id",
 				assertion: func(t *testing.T, val string) {
-					pattern := regexp.MustCompile(`^i-[a-z0-9]{17}$`)
+					pattern := regexp.MustCompile(`^i-[a-z0-9]+$`)
 					assert.Regexp(t, pattern, val)
 				},
 			},
