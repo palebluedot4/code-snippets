@@ -18,3 +18,13 @@ func GoodIncrement(c *Counter) {
 	defer c.mu.Unlock()
 	c.value++
 }
+
+func (c Counter) BadMethod() {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+}
+
+func (c *Counter) GoodMethod() {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+}
