@@ -44,3 +44,17 @@ func GoodPassSyncByPointer(wg *sync.WaitGroup) {
 	}()
 	wg.Wait()
 }
+
+func BadAssignmentCopy() {
+	var c Counter
+	c.mu.Lock()
+	c2 := c
+	_ = c2
+}
+
+func GoodPointerAssignment() {
+	var c Counter
+	c.mu.Lock()
+	c2 := &c
+	_ = c2
+}
