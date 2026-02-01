@@ -28,3 +28,19 @@ func (c *Counter) GoodMethod() {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 }
+
+func BadPassSyncByValue(wg sync.WaitGroup) {
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+	}()
+	wg.Wait()
+}
+
+func GoodPassSyncByPointer(wg *sync.WaitGroup) {
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+	}()
+	wg.Wait()
+}
